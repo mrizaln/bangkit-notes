@@ -1,0 +1,25 @@
+what to learn
+    pengenalan android studio
+    Activity
+        komponen yang sangat penting dan berhubungan erat dengan interaksi ke pengguna.
+        menangani tampilan mana yang akan ditampilkan dan mengatur logika yang ada di dalamnya
+        activity juga memiliki lifecycle tersendiri yang dimulai dari onCreate hingga onDestroy
+    Intent
+        komunikasi antar komponen di dalam sebuah aplikasi
+    Views dan ViewGroup
+        semua elemen UI di aplikasi android dibangun menggunakan dua komponen, View dan ViewGroup
+            View        elemen UI tempat berinteraksi
+            ViewGroup   mengatur tata letak dari komponen
+    Style dan Theme
+        Material Design Component (MDC)
+    RecyclerView
+        widget untuk menampilkan data dengan jumlah banyak secara dinamis
+
+android
+    what android
+        os dikembangkan google for smartphone and tablet
+        2.5 pengguna aktif store (mei 2019)
+
+    why android
+        os as alat multimedia, ada perangkat keras like accelerometer, gyroscope, dst
+

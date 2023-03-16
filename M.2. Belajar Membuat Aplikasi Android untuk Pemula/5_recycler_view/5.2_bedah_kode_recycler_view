@@ -1,0 +1,106 @@
+RecyclerView
+    pendekatan umum dalam mengembangkan aplikasi mobile terletak pada bentuk list-to-detaul
+    pendekatan ini menampilkan sejumlah informasi dalam bentuk list
+    ketika pengguna menekan salah satu item untuk mendapatkan detail informasi, maka aplikasi akan menampilkannya secara detail
+
+    RecyclerView mewajibkan pattern ViewHolder -> adapter
+
+    beberapa bagian dalam adapter
+        - fun onCreateViewHolder()          membuat ViewHolder baru yang berisi layout item yang digunakan
+        - fun onBindViewHolder()            menetapkan data yang ada ke dalam ViewHolder sesuai dengan posisinya dengan menggunakan listHero[position]
+        - fun getItemCount()                menetapkan ukuran dari list data yang ingin ditampilkan
+        - class ListViewHolder              ViewHolder dalam RecyclerView
+                                                wrapper sperti View yang berisi layout untuk setiap item dalam daftar RecyclerView
+
+    hubungan antara satu adapter dengan ViewHolder adalah satu ke banyak
+        satu kelas adapter bisa memiliki lebih dari satu ViewHolder
+
+
+fixed size
+    rvHeroes.setHasFixedSize(true)
+        bila fixe size bernilai true, make RecyclerView dapat melakukan optimasi ukuran lebar dan tinggi secara otomatis
+        nilai lebar dan tinggi RecyclerView menjadi konstan
+
+
+layout manager
+    setLayoutManager() unutk mengganti layout
+        - LinearLayoutManager
+        - GridLayoutManager
+
+    mengatur tampilan RecyclerView saat landscape dan portrait
+
+        if (applicationContext.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            rvHeroes.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            rvHeroes.layoutManager = LinearLayoutManager(this)
+        }
+
+
+context pada Adapter
+    untuk mendapatkan context pada Adapter, kita bisa menggunakan itemView.getContext()
+    saat di Activity: this@MainActivity/MainActivity.this
+
+    context ini akan sangat bermanfaat untuk menampilkan toast, mengambil resourcce, berpindah pada activity lain.
+
+
+membuat callback pada Adapter
+    ... pake interface ...
+
+    selain menggunakan interface, untuk pengguna Kotlin bisa menmbuat callback menggunakan lambda
+
+        class ListHeroAdapter(
+            private val listHero: ArrayList<Hero>, 
+            private val onClick: (Hero) -> Unit
+        ) : RecyclerView.Adapter<ListHeroAdapter.ListViewHolder>()
+            ...
+            inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+                fun bind(hero: Hero) {
+                    ...
+                    itemView.setOnClickListener {
+                         onClick(hero)
+                    }
+                }
+            }
+        }
+
+    untuk memanggilnya
+        val listHeroAdapter = ListHeroAdapter(list) {
+            // do something
+        }
+
+
+mengirim data ke detail
+    apabila terdapat halaman detail dan anda ingin mengirimkan data dari MainActivity ke DetailActivity, anda bisa menggunakan kode berikut pada MainActivity untuk mengirimkan data Parcelable
+
+        listHeroAdapter.setOnItemClickCallback(object : ListHeroAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Hero) {
+                val intentToDetail = Intent(this@MainActivity, DetailActivity::class.java)
+                intentToDetail.putExtra("DATA", data)
+                startActivity(intentToDetail)
+            }
+        })
+
+    untuk menerimanya
+
+        val data = intent.getParcelableExtra<Hero>("DATA")
+        Log.d("Detail Data", data?.name.toString())
+
+
+menu
+    lihat menu_main.xml
+
+    perhatikan tag <item>, attribute title diberikan untuk menampilkan teks pada menu
+    terdapat 5 kondisi yang dapat diapasang pada attribute app:showAsAction
+        - ifRoom                menampilkan action ketika ada ruangan pada action bar
+        - withText              menampilkan actionitem beserta judulunya
+        - never                 tidak akan pernah ditampilkan pada action bar dan hanya akan ditampilkan pada overflow menu
+        - always                akan selalu tampil pada action bar
+        - collapseActionView    berhubungan dengan komponen collapsible
+
+    anda juga dapat menampilkan ikon pada App Bar dengan menggunakan attirbute android:icon yang dikombinasikan dengan aksi ifRoom
+
+        <item
+            android:id="@+id/action_info"
+            android:title="@string/info"
+            android:icon="@android:drawable/ic_dialog_info"
+            app:showAsAction="ifRoom"/>

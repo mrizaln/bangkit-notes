@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+<!--    colors from nordic theme: https://www.nordtheme.com/-->
+    <color name="polar_night_0">#2e3440</color>
+    <color name="polar_night_1">#3b4252</color>
+    <color name="polar_night_2">#434c5e</color>
+    <color name="polar_night_3">#4c566a</color>
+
+    <color name="snow_storm_0">#d8dee9</color>
+    <color name="snow_storm_1">#e5e9f0</color>
+    <color name="snow_storm_2">#eceff4</color>
+
+    <color name="frost_0">#8fbcbb</color>
+    <color name="frost_1">#88c0d0</color>
+    <color name="frost_2">#81a1c1</color>
+    <color name="frost_3">#5e81ac</color>
+
+    <color name="aurora_0">#bf616a</color>
+    <color name="aurora_1">#d08770</color>
+    <color name="aurora_2">#ebcb8b</color>
+    <color name="aurora_3">#a3be8c</color>
+    <color name="aurora_4">#b48ead</color>
+</resources>

@@ -1,0 +1,39 @@
+what
+    komponen tampilan (widget) yang lebih canggih ketimbang pendahulunya, yakni ListView
+
+
+why
+    memiliki memory yang ringan dan performa yang baik
+    secara default memiliki ViewHolder
+    mudah untuk memberikan animasi ketika menambahkan, memperbarui, atau menghapus item dengan ItemAnimator
+    mendukung LayoutManager untuk mengubah tata letak
+    mendukung pengguliran (scrolling) secara vertikal dan horizontal
+    dapat digunakan bersama dengan DiffUtil
+
+
+gambar penerapan RecyclerView
+
+        DataSource <-----> |   Adapter_   | <-----> |  RecyclerView_  |
+                           | [ViewHolder] |         | [LayoutManager] |
+                                  |
+                                  |
+                             Layout Item
+
+
+beberapa bagian yang perlu diketahui untuk menampilkan data dengan RecyclerView
+    RecyclerView                komponen ViewGroup yang perlu ditambahkan ke dalam berkas XML
+    LayoutManager               digunakan untuk mengatur tata letak item di dalam RecyclerView
+        LinearLayoutManager         satu kolom linear
+        GridLayoutManager           tampilan lebih dari satu kolom
+        StaggeredLayoutManager      tampilan menyesuaikan tinggi setiap item
+    Data source                 sumber data yang akan ditampilkan ke dalam RecyclerView, biasanya berupa List/ArrayList
+    Layout item                 berkas tampilan XML untuk setiap baris item
+    RecyclerView.Adapter        class yang digunakan untuk menghubungkan data source dengan RecyclerView
+        onCreateViewHolder()        membuat ViewHolder baru yang terhubung dengan layout item
+        onBindViewHolder()          menetapkan data source ke dalam ViewHolder sesuai dengan posisinya
+        getItemCount()              menetapkan ukuran dari jumlah data yang ingin ditampilkan
+    RecyclerView.ViewHolder     menetapkan bagaimana data ditampilkan ke Layout Item
+
+
+langkah-langkah mengimplementasikan RecyclerView dari awal sampai data bisa tampil
+    

@@ -1,0 +1,67 @@
+layout xml
+    merupakan user interface dari suatu activity
+        <?xml version="1.0" encoding="utf-8"?>          identifikasi format xml
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+                menandakan namespace yang digunakan dalam keseluruhan berkas xml
+
+
+macam view -> komponen user interface
+    TextView        menampilkan text
+    EditText        memberikan input text
+    Button          komponen aksi klik
+    LinearLayout    ViewGroup yang menjadi parent dari semua sub komponen view di dalamnya
+                    bersifat sebagai kontainer untuk komponen lain dengan orientasi secara vertikal dan horizontal
+
+
+cara membaca
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/calculate"
+        android:layout_marginBottom="16dp"/>
+
+        >>> <namespace>:<attribute>="<value>"       -> namespace
+
+    beberapa format pengisian value
+        android:<property_name>="@+id/view_id"                          id
+        android:<property_name>="<property_value>"                      attribute biasa
+        android:<property_name>="@<resource_type>/resource_id"          attribute yang memanggil value dari folder res
+
+
+        what '@+id/' ?
+            untuk memberikan identifier pada view tersebut
+            pemberian identifier dimaksudkan agar kita bisa melakukan manipulasi/pengendalian
+            pada level logic di komponen activity atau fragment
+
+
+ukuran view
+    wrap_content        menyesuaikan dengan ukuran konten di dalamnya
+    match_parent        menyesuaikan dengan ukuran parent. apabila paling luar, mengikuti ukuran layar device
+    fixed size          nilai tetap (satuan dp)
+
+
+padding dan margin
+    padding     jarak dari isi ke tepi komponen (dalam)
+    margin      jarak dari tepi komponen ke komponen lain (luar)
+
+
+    attribute:      android:padding="<value>"
+                    android:margin="<value>"
+
+
+satuan ukuran pada android
+    sp (scale independent pixel)        digunakan untuk ukuran teks, scaling berdasarkan ukuran font pengguna
+    dp (density independent pixel)      digunakan untuk semuanya selain ukuran teks
+    px                                  sesuai dengan pixel sebenarnya di layar
+
+
+pebahasan tentang logika kode
+    Activity
+        class MainActivity : AppCompatActivity()
+            menandakan bahwa kelas di atas merupakan sebuah activity karena inherit ke superclass bernama AppCompatActivity
+            AppCompatActivity merupakan kelas dasar yang mengatur fungsi dasar Activity supaya bisa tetap berjalan pada versi android lama, seperti pengaturan tema dan app bar
+
+    onClickListener
+        lis
+

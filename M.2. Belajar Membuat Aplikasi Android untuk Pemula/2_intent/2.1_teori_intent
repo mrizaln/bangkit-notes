@@ -1,0 +1,17 @@
+what Intent
+    mekanisme untuk melakukan sebuah action dan komunikasi antar komponen aplikasi misal Activity, Service, dan Broadcast Receiver
+
+penggunaan
+    memindahkan satu activity ke activity lain dengan atau tidak membawa data
+    menjalankan background service
+    mengirimkan object broadcast ke aplikasi yang membutuhkanmekanisme untuk 
+
+bentuk
+    explicit Intent
+        tipe Intent yang digunakan untuk menjalankan komponen lain dengan tujuan yang sudah jelas atau eksplisis
+        umumnya Intent ini digunakan untuk berpindah ke Activity lain pada satu aplikasi
+        bekerja dengan memanfaatkan context dari Activity asal dan nama Activity yang dituju
+    implicit Intent
+        tipe Intent yang tidak memerlukan detail nama kelas yang ingin diaktifkan
+        model ini memungkinkan komponen dari aplikasi lain bisa merespon request intent yang dijalankan
+        umunnya intent ini diperuntukkan untuk menjalankan fitur/fungsi dari komponen aplikasi lain

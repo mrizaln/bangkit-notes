@@ -1,0 +1,13 @@
+Glide
+    berfungsi untuk memuat gambar
+    bisa dengan mudah untuk memuat gambar yang datanya berasal dari URL
+
+        Glide.with(holder.itemView.context)
+            .load(photo) // URL Gambar
+            .into(holder.imgPhoto) // imageView mana yang akan diterapkan
+
+    fungsi lainnya
+        - circleCrop()      membuat gambar menjadi lingkaran
+        - transition        menambahkan transisi ketika gambar selesai dimuat
+        - thumbnail         menambahkan thumbnail atau gambar sebelum gambar dimuat
+        - error             menggantikan gambar yang gagal ketika dimuat

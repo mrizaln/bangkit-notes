@@ -1,0 +1,165 @@
+# latihan explicit Intent
+    register Activity
+        tiap Activity harus diregistrasikan di AndroidManifest.xml
+        karena menggunakan Android Studio, proses register dilakukan secara otomatis
+
+    Intent filter
+        merupakan mekanisme untuk menentukan bagaimana suatau Activity dijalankan oleh Android Runtime (ART) atau Dalvik Virtual Machine (DVM)
+
+    pindah Activity
+        val moveIntent = Intent(this@MainActivity, MoveActivity::class.java)
+        startActivity(moveIntent)
+
+            syntax: Intent(<Context>, <destination_class>)
+
+        Context: sebuah kelas yang digunakan untuk mengakses resource dari Activity tersebut
+
+
+
+# latihan mengirim data pada Intent
+    mengirimkan data
+        method putExtra(<key>, <data>)          digunakan untuk mengirimkan data bersamaan dengan object Intent
+            putExtra() merupakan method yang menampung pasangan key-value dan memiliki beberapa pilihan intpu
+
+    menerima data
+        getIntent().getStringExtra(<key>)       digunakan untuk mendapatkan data
+            <key> yand digunakan harus sama dengan <key> pada saat dikirim
+
+
+
+# latihan mengirim data dengan Parcelable
+    Parcelable: suatu interface yang memungkinkan kita melakukan pengiriman satu object sekaligus dari suatu Activity ke Activity lain
+    object yang diimplementasikan dengan Parcelable akan memudahkan dalam mengirimkan data satu Activity ke Activity lainnya
+
+    jika menggunakan bahasa Kotlin, ada fitur untuk membuat kelas Parcelable dengan lebih simpel dan tidak terlalu banyak kode hasil dari Add Impelementation Parcelable, yaitu dengan menggunakan anotasi Parcelize
+    untuk menambahkan perlu diikuti langkah berikut
+
+        tambahkan kode berikut di build.grade (module: app)
+            plugins {
+                id 'com.android.application'
+                id 'kotlin-android'
+                id 'kotlin-parcelize'       // <<<- this one
+            }
+
+            android {
+                ...
+            }
+
+        jika sudah, pembuatan data class yang parcelized jadi:
+            @Parcelize
+            data class <class_name>(
+                <property_1>: <type_1>,
+                <property_2>: <type_2>,
+                ...
+            ) : Parcelable
+
+    put Parcelable
+        menggunakan putExtra(<key>, <parcel>) pada Intent yang dibuat
+
+    get Parcelable
+        menggunakan getParcelable(<key>, <parcelized_class>)        // android sdk >= 33
+        menggunakan getParcelable(<key>)                            // android sdk <  33
+            harus @Suppress("DEPRECATION")
+
+    mengirimkan dan mendapatkan kumpulan Parcelable
+        put:        Intent.putParcelableArrayListExtra(<key>, <ArrayList_of_Parcelable>)
+        get:        getIntent().getParcelableArrayListExtra(<key>, <parcelized_class>)
+
+
+
+# latihan implicit intent
+    implementasi menggunakan
+        Intent(Intent.ACTION_DIAL, Uri)
+
+            Uri: Uri.parse("tel:<phone_number>")
+
+    berbagian Intent (standard Activity actions):
+        - ACTION_MAIN
+        - ACTION_VIEW
+        - ACTION_ATTACH_DATA
+        - ACTION_EDIT
+        - ACTION_PICK
+        - ACTION_CHOOSER
+        - ACTION_GET_CONTENT
+        - ACTION_DIAL
+        - ACTION_CALL
+        - ACTION_SEND
+        - ACTION_SENDTO
+        - ACTION_ANSWER
+        - ACTION_INSERT
+        - ACTION_DELETE
+        - ACTION_RUN
+        - ACTION_SYNC
+        - ACTION_PICK_ACTIVITY
+        - ACTION_SEARCH
+        - ACTION_WEB_SEARCH
+        - ACTION_FACTORY_TEST
+
+    URI (universal resource identifier)
+        untaian karakter yang digunakan untuk mengidentifikasi nama, sumber, atau layanan di internet sesuai dengan RFC 2396
+            Uri di atas:        Uri.parse("<schema>:<teks>")
+
+    common Intents: [https://developer.android.com/guide/components/intents-common.html]
+                    [https://arifaizin.medium.com/kumpulan-kode-impicit-intent-9d93ca5f3008]
+
+
+# latihan mendapatkan nilai balik dari Intent
+    registerForActivityResult
+        untuk membuat sebuah Activity yang dapat mengembalikan nilai, kita harus membuat object ActivityResultLauncher
+
+            private val resultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(
+                ActivityResultContracts.startActivityForResult()
+            ) { result ->
+                ...
+            }
+
+        perlu pendaftaran jenis kembalian ke sistem dengan menggunakan kode registerForActivityResult dengan parameter ActivityResultContract
+
+        perlu diketahui bahwa kita juga bisa mendapatkan nilai kembalian dari selain Activity, contohnya seperti foto dari galeri dengan mendefinisikan contract yang berbeda
+
+        untuk menjalankan Intent, gunakan ActivityResultLauncher.launch(<intent>)
+
+    mengatur dan membaca nilai hasil
+        yah gitu lah
+
+
+
+# debugging
+    bug
+        jenis
+            bug yang menyebabkan force close
+                java NullPointerException
+                java OutOfMemoryException
+                java IndexOutOfBound
+                java MemoryLeak
+
+            bug yang menyebabkan Application is not responding
+                android akan menganggap sebuah aplikasi sebagai not responding bila proses yang berjalan di main thread tidak selesai dalam 5 detik
+
+            bug yang disebabkan oleh kesalahan logika
+
+        penyebab dasar, lack of:
+            pemahaman tentang proses bisnis yang dirancang
+            pemahaman tentang komponen aplikasi android
+            konsep OOP dan pemahaman tentang java yang digunakan
+            ketelitian dalam menulis program hingga kurang baiknya dalam melakukan pengujian aplikasi
+
+        cara mengatasi error bug
+            menemukan bug dari membaca android monitor
+            melakukan perbaikan pada bug
+            melakukan proses debugging aplikasi
+            melakukan otomasi testing dengan tools yang disediakan seperti Espresso untuk ui testing dan jUnit untuk unit testing
+
+    logging
+        menampilkan data dalam logcat
+
+            Log.d(<tag>, <message>)
+
+        varian
+            Log.e()         error
+            Log.w()         warning
+            Log.i()         information
+            Log.d()         debug
+            Log.v()         verbose
+
+    debug breakpoint

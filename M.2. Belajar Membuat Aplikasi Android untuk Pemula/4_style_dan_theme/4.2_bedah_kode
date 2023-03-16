@@ -1,0 +1,10 @@
+tema yang digunakan: Theme.MaterialComponents.DayNight.DarkActionBar
+
+atribut:
+    - colorPrimary              warna utama aplikasi yang tampil pada Action Bar dan komponen Button
+    - colorPrimaryVariant       variasi dari warna utama yang biasanya digunakan pada Status Bar
+    - colorOnPrimary            warna yang digunakan ketika ada text/icon di atas warna primary
+    - colorSecondary            warna utama sekunder yang tampil pada Action Bar dan komponen EditText
+    - colorSecondaryVariant     variasi dari warna sekunder
+    - colorOnSecondary          warna yang digunakan ketika ada teks/icon di atas warna sekunder
+    - android:statusBarColor    warna yang digunakan untuk status bar

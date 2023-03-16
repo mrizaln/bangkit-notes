@@ -1,0 +1,75 @@
+abstract
+    activity merupakan salah satu komponen penting android yang berfungsi menampilkan user interface ke layar pengguna
+    umumnya dalam sebuah aplikasi, terdapat lebih dari satu activity yang saling terhubung dengan tugas yang berbeda-beda
+    setiap activity harus terdaftar di AndroidManifest.xml
+
+activity lifecycle  ←↑→↓
+                                    activity launched
+                                            ↓
+            -----------------------→ [ onCreate()  ]
+            |                               ↓
+            |                         [ onStart() ] ←------------------------------
+   Aplikasi dibuka lagi                     ↓                                     |
+            |                        [ onResume()  ] ←----------------      [ onRestart() ]
+      _     |     _                         |                        |            |
+     | App process |                   _    ↓    _                   |            |
+     |   killed    |                  | Activity_ |                  |            |
+            ↑                         |  running  |           aplikasi tampil     |
+            |                               |                   penuh lagi        |
+            |                               ↓                        |            |
+     Aplikasi dengan          beberapa bagian Activity tidak         |            |
+     prioritas tinggi         terlihat karena pop-up/dialog_         |            |
+    membutuhkan memory                      |                        |            |
+            |                               ↓                        |            |
+            |------------------------ [ onPause() ] ------------------            |
+            |                               |                                     |
+            |                               ↓                                     |
+            |               Activity tidak terlihat sama sekali               Kembali ke
+            |                karena berpindah ke Activity lain              Activity lagi
+            |                               |                                     |
+            |                               ↓                                     |
+            ------------------------- [ onStop()  ] -------------------------------
+                                            |
+                                            ↓
+                              Activity dihancurkan oleh sistem
+                                            |
+                                            ↓
+                                     [ onDestroy() ]
+                                            |
+                                       _    ↓    _
+                                      | Activity_ |
+                                      | shut down |
+
+saving Activity state
+    ketika Activity mengalami pause kemudian resume -> state masih tersimpan
+    onDestroy() akan menghancurkan state -> perlu disave
+    perubahan yang terjadi pada state Activity perlu disimpan terlebih dahulu sebelum ia dihancurkan
+        [ onSaveInstanceState() ] -> bundle             -> jangan simpan data yang besar (cth: bitmap)
+                                        putString()
+                                        putInt()
+        ketika Activity di-restart, bundle akan diberikan pada metode onCreate() dan onRestoreInstanceState()
+
+    proses penghancuran Activity juga dapat terjadi ketika terdapat perubahan konfigurasi seperti
+        perubahan orientasi layar
+        keyboard availability
+        perubahan bahasa
+
+                                                           _         _
+             -------------------------------------------→ | Activity_ | ←-------------------------
+             |                                            |  running  |                          |
+             |                                                  |                                |
+             |                                                  |                                |
+             |                                      berpindah ke Activity lain      instance Activity masih ada,
+             |                                                  |                 tidak perlu mengembalikan state
+             |                                                  |                                |
+[     onCreate() or        ]                                    ↓                                |
+[ onRestoreInstanceState() ]                         [ onSaveInstanceState()  ]           [ onRestart() ]
+             |                                                  |                                |
+             |                                                  |                                |
+             |                                                  |                                |
+    Aplikasi dibuka lagi                                        |                       Kembali ke Activity
+             |                                                  |                                |
+             |                                                  |                                |
+      | App process | --< Aplikasi dengan prioritas ---< | Activity is | >------------------------
+      |    killed*  |     tinggi membutuhkan memory      | not visible |
+

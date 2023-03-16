@@ -1,0 +1,89 @@
+what
+    fitur yang memungkinkan kita untuk binding sebuah property ke elemen view
+    library ini secara otomatis akan memberi akses langsung ke semua view yang ada di dalam XML
+    kita tidak perlu secara eksplisit melakukan binding ke elemen view menggunakan findViewByID() atau library lainnya
+
+
+
+cara mengaktifkan View Binding
+    secara default view Binding tidak otomatis aktif
+    untuk mengaktifkannya, anda perlu menambahkan kode berikut pada build.gradle di level model yang akan menggunakan View Binding
+
+        android {
+            ...
+            buildFeatures {
+                viewBinding true
+            }
+        }
+
+
+    setelah project disinkronisasikan, ia akan otomatis membuat kelas yang menampung semua id yang di dalam layout XML.
+
+    misal kita punya layout activity_main.xml:
+
+        <LinearLayout ...>
+            <TextView
+                android:id="@+id/tv_welcome"
+                ... />
+        </LinearLayout>
+
+
+    sehingga, ia akan otomatis ter-generate class dengan nama ActivityMainBinding pada
+        app/build/generated/data_binding_base_class_source_out/debug/out/com/dicoding/<nama_aplikasi>/databinding 
+    dengan isi seperti berikut
+
+        public final class ActivityMainBinding implements ViewBinding {
+            @NonNull
+            private final LinearLayout rootView;
+
+            @NonNull
+            public final TextView tvWelcome;
+            ...
+        }
+
+    setiap id yang ada di dalam layout tersebut akan dibuat variablenya secara otomatis dengan format lowerPascalCase
+        tv_welcome ->   tvWelcome
+                        rootView    -> getRoot()
+
+
+    jika anda ingin sebuah layout tidak di-generate class View Binding-nya, anda harus menambahkan property berikut pada parent layout-nya
+        
+        <LinearLayout
+            ...
+            tools:viewBindingIgnore="true"
+            ...
+        </LinearLayout>
+
+
+
+cara menggunakan View Binding
+    untuk menggunakan View Binding anda perlu membuat object View Binding yang menginflate Activity yang digunakan dan ganti parameter pada setContentView dengan root dari View Binding
+        seperti berikut:
+
+        class MainActivity : AppCompatActivity() {
+            private lateinit var binding: ActivityMainBinding
+
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                binding = ActivityMainBinding.inflate(layoutInflater)
+                setContentView(binding.root)
+            }
+        }
+
+    sekarang anda bisa langsung menggunakan id tv_welcome yang di dalam activity_main.xml
+        seperti berikut:
+
+        binding.tvWelcome.text = "Hello Dicoding"
+
+
+
+perbandingan View Binding dengan alternatif lain
+                    compile-time safety     elegance        correct type of View    build speed impact      support kotlin & java
+findViewByID                 -                  -                    -                     YES                       YES
+Kotlin Synthetic             -                 YES                  YES                    YES                        -
+DataBinding                 YES                YES                  YES                     -                        YES
+ViewBinding                 YES                YES                  YES                    YES                       YES
+
+    compile-time safety         aman dari null
+    elegance                    tidak banyak boilerplate
+    correct type of view        memberikan tipe komponen yang tepat

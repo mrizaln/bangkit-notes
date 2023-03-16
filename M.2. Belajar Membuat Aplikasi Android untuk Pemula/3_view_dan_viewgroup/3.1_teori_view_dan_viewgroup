@@ -1,0 +1,86 @@
+View
+    what
+        komponen dasar yang tampil di layar dan dapat digunakan untuk berinteraksi dengan pengguna
+
+    examples
+        TextView        menampilkan text ke layar
+        Button          komponen yang membuat pengguna dapat berinteraksi dengan cara ditekan
+        ImageView       menampilkan gambar
+        RecyclerView    menampilkan informasi dalam bentuk list
+        GridView        menampilkan informasi dalam bentuk grid
+        RadioButton     memungkinkan pengguna dapat memilih satu pilihan dari berbagai pilihan yang disediakan
+        CheckBox        memungkinkan pengguna dapat memilih lebih dari satu dari pilihan yang ada
+
+ViewGroup
+    what
+        View spesial yang mewadahi object-object View lainnya
+
+    examples
+        Linearlayout
+            akan menempatkan komponen-komponen di dalamnya secara horizontal atau vertikal
+            memiliki atribut weight untuk menentukan proporsi ukuran View dalam sebuah ruang yang tersedia
+
+        Relativelayout
+            posisi masing-masing komponen di dalamnya dapat mengacu secara relatif pada komponen yang lainnya dan juga relatif ke batas layar
+
+        ConstraintLayout
+            default and direkomendasikan
+            dapat menyusun tampilan yang kompleks cukup dengan satu lapis hierarki saja
+                akan memberikan performa dan proses rendering yang lebih baik dari pada nested layout
+            mirip Relativelayout tapi lebih fleksibel
+
+            fitur tambahan:
+                relative positioning            posisi komponen relatif terhadap komponen lain
+                center positioning & bias       menentukan alignment dengan menggunakan persentase
+                baseline alignment              membuat text pada suatu komponen sejajar dengan text pada komponen lain
+                guideline                       membuat garis pembantu yabg tidak terlihat oleh user
+                barrier                         sama seperti guideline tapi posisinya dapat mengikuti komponen lain
+                chain                           mengatur sekumpulan komponen secara linear
+                    spread          tiap komponen menyebar
+                    spread inside
+                    weighted        membagi ruang yang tersedia
+                    packed          elemen akan menyatu dan dikemas bersama
+
+        FrameLayout
+            layout paling sederhana
+            membuat komponen yang ada di dalamnya menjadi menumpuk atau saling menutupi satu dengan yang lainnya
+            menjadi kontainer untuk fragment-fragment di dalam sebuah activity
+
+        TableLayout
+            susunan komponen akan berada dalam baris dan kolom
+
+        ScrollView
+            memungkinkan komponen di dalamnya digeser secara vertikal dan horizontal
+            hanya 1 parent utama
+            valid parent:
+                Linearlayout
+                Relativelayout
+                FrameLayout
+                TableLayout
+
+
+hierarchy
+    View ─┬─ ImageView ───── ImageButton
+          ├─ ProgressBar ─── AbsSekkBar ────┬─ SeekBar
+          │                                 ├─ RatingBar
+          ├─ TextView ────┬─ Button         └─ CompoundButton ─┬─ RadioButton
+          │               │                                    └─ CheckBox
+          │               └─ EditText
+          └─ ViewGroup ───┬─ Linearlayout ──┬─ RadioGroup
+                          │                 └─ TableLayout
+                          ├─ Relativelayout
+                          └─ FrameLayout ───┬─ CalendarView
+                                            ├─ TimePicker
+                                            └─ DatePicker
+
+
+which layout to choose?
+    tips performa untuk aplikasi android adalah dengan menyusun hierarki layout dalam sebuah file layout xml secara sederhana dan flat
+    tergantung
+
+
+    mdpi            ~160dpi
+    hdpi            ~240dpi
+    xhdpi           ~320dpi
+    xxhdpi          ~480dpi
+    xxxhdpi         ~640dpi

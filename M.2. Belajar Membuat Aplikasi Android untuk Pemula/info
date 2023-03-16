@@ -1,0 +1,26 @@
+project structure
+    android manifest
+        memberikan beragam informasi penting kepada sistem android
+            komponen aplikasi
+            permission
+    java
+    res/resource
+        drawable
+        layout
+        mipmap
+        values
+
+membuat apk dan aab
+    apk (android package kit)
+        berkas executable yang bisa langsung dijalankan di dalam os android
+    aab (android app bundle)
+        berkas yang didistribusikan oleh google play ke pengguna -> dynamic
+
+    credibility
+        unsigned apk/aab    -> debug
+        signed apk/aab      -> release  -> need keystore (what this)
+
+    keystore: binary file yang berisi informasi tentang satu atau lebih private key
+        penting harus dijaga
+        no keystore     -> can't upload update to google play
+
