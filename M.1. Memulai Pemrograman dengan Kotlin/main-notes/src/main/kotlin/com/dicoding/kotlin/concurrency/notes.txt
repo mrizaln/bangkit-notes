@@ -1,0 +1,25 @@
+process
+    bagian dari aplikasi
+
+thread
+    bagian dari process
+
+i/o-bound
+    well, i/o-bound
+
+deadlocks
+    dua proses atau lebih saling menuggu proses yang lain untuk melepaskan resource yang sedang digunakan
+
+livelocks
+    similar to deadlocks but while at it process might change it states
+
+starvation
+    kondisi yang biasanya terjadi setelah deadlocks
+        kesalahan sistem juga bisa menjadi penyebabnya
+    kekurangan sumber daya
+    solution
+        scheduling algorithm with priority
+        or aging technique
+
+race conditions
+    banyak thread mengakses data yang dibagikan bersama dan mencoba mengubahnya secara bersamaan

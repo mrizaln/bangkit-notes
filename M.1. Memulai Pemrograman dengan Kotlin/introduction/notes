@@ -1,0 +1,63 @@
+kotlin
+    multiplatform
+        platform:
+            jvm
+            js
+            android
+            native
+                ios
+                linux
+                windows
+                mac
+                embedded
+                    stm32
+        code-sharing
+            memungkinkan mengelompokkan beberapa kode seusai fungsi masing-masing as module
+            module:
+                common module:      platform-agnostic code
+                platform module:    platform-specific code
+                regular module:     umum tapi target platform tertentu?
+    multiparadigm
+        oop
+        fp
+
+kotlin for server-side application
+    why
+        expressiveness
+        scalability
+        interoperability:   kotlin is fully compatible with all java framework
+        migration
+        tooling
+    framework
+        spring  (java)
+        vert.x
+        ktor
+        kotlinx.html
+        exposed (SQL framework)
+
+kotlin for android application
+    why
+        compatibility (fully compatible with JDK 6)
+        performance
+        interoperability
+        compilation time
+
+kotlin as investment
+    kelebihan di aspek produktivitas
+        ringkas (concise)
+        interoperable
+        tool-friendly
+
+kotlin characteristics
+    modern and concise  -> no semicolon (??? is it even modern?)
+    pragmatic
+    safe
+        memory safe     -> no NullPointerException (null safety)
+            kotlin membedakan objek yang boleh null atau tidak boleh null
+    statically typed
+        has type inference btw
+    free and open source
+
+kotlin ecosystem
+    
+
