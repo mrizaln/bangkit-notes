@@ -1,0 +1,109 @@
+what UX
+    pengalaman dan perasaan pengguna saat berinteraksi terhadap suatu produk
+
+
+karakteristik UX design yang baik
+    useful
+        produk yang menyelesaikan masalah penggunanya
+
+        untuk mengevaluasi apakah suatu produk sudah berguna atau tidak, anda dapat bertanya seperti ini
+            - apakah produk tersebut menyelesaikan masalah anda?
+            - apakah desain anda membantu pengguna mencapai tujuan yang ia inginkan?
+            - apakah desain anda memberikan value pada pengalaman pengguna?
+
+    usable
+        produk yang dibuat mudah untuk digunakan, terutama untuk mencapai tujuan yang diinginkan dengan memuaskan
+
+        pada produk digital, anda dapat menanyakan kepada pengguna pertanyaan seperti ini:
+            - apakah anda dapat dengan cepat menemukan fitur yang diinginkan?
+            - apakah anda menyelesaikan apa yang diinginkan dengan mudah tanpa mencoba berulang kali?
+            - apakah anda tidak perlu waktu lama untuk memahami suatu perintah di dalamnya?
+
+    enjoyable
+        membuat pengguna puas
+
+        how
+            - berikan fitur tambahan yang berguna
+            - gunakan rekomendasi
+            - animasi yang smooth dan gambar yang menarik perhatian
+            - gunakan gamification
+
+        evaluate: survey
+            - apakah desain aplikasi ini membuat anda betah menggunakannya?
+            - apakah aplikasi ini membuat anda ingin kembali menggunakannya lagi?
+            - berapakah rating yang diberikan jika anda merekomendasikan aplikasi ini kepada orang lain?
+
+    equitable (adil)
+        produk yang dibuat dapat digunakan secara adil oleh orang-orang dengan beragam kemampuan dan latar belakang
+        example: accessibility
+
+        komponen penting lainnya dengan memperhatikan beberapa aspek:
+            - memory RAM yang kecil
+            - koneksi pengguna yang lambat
+            - literasi yang kurang
+            - literasi digital yang kurang
+
+
+piramida UX
+    meaningful      subjective
+    pleasurable
+    convenient
+
+    usable          objective
+    reliable
+    functional
+
+
+tugas UX designer
+    - melakukan riset untuk memahami bagaimana pengguna berinteraksi dengan produk dan masalah yang dialaminya
+    - membuat gambar rangka (wireframe) untuk mengetahui bagaimana gambaran kasar halaman pada produk dan hubungannya dengan halaman lain
+    - membuat information architecture untuk menyusun dan mengkategorikan setiap halaman yang ada di dalam suatu produk
+    - membuat prototipe
+    - memahami konsep dasar desain visual
+    - berkomunikasi secara efektif
+
+    tipe designer
+        - generalis
+            designer yang keterampilan atau minatnya mencakupi beberapa topik yang berbeda
+        - spesialis
+            designer yang ahli secara mendalam pada satu topik tertentu
+        - T-shaped
+            designer yang ahli di satu topik dan juga memahami topik yang lain
+
+    karier UX designer
+        - interaction designer
+        - visual designer
+        - motion designer
+        - UX researcher
+        - UX writer
+        - UX engineer
+        - product designer
+
+
+konsep desig thinking
+    framework
+        - lean UX
+        - double diamond
+        - user centered design (UCD)
+        - design thinking                       <<< yang dibahas
+
+    design thinking, what?
+        framework yang digunakan untuk membuat solusi atas masalah pengguna dengan cara yang mudah dan terjangkau
+
+    tahap
+        - emphatize
+            mencari permasalahan yang dialami pengguna ketika berinteraksi dengan produk
+        - define
+            mendefinisikan masalah utama yang akan diselesaikan
+        - ideate
+            eksplorasi untuk menghasilkan ide yang dapat menjadi solusi dari masalah yang telah didefinisikan sebelumnya
+        - prototype
+            membuat prototype berdasarkan ide yang sudah dibuat
+        - test
+            uji coba prototype
+
+
+tips dan trik membangun personal branding sebagai UX designer
+    - membuat UX case study
+    - mebuat portfolio
+    - berkomunitas

@@ -1,0 +1,216 @@
+# konsep empathize: berempati dengan user
+    empati != simpati
+        simpati: rasa kasihan
+        empati: memposisikan diri seperti orang lain yang dimaksud, sehingga benar-benar memahami apa yang orang tersebut rasakan
+
+    how
+        - melakukan riset: survei, wawancara, observasi
+        - membuat empathy map
+        - memahami masalah utama atau pain point pengguna
+        - mengidentifikasi user persona
+        - menulis user story
+        - memetakan user journey map
+
+
+    ## UX research
+        waktu melakukan riset
+            - foundation/strategic/generative research: riset yang dilakukan di awal sebelum mendesain aplikasi untuk mengetahui kebutuhan dan masalah pengguna
+            - design/tactical research: riset ketika sudah memiliki prototype
+            - post-launch research: riset setelah produk dirilis
+
+        yang dibahas: foundation research
+
+        metode melakukan research
+            primary research: interaksi langsung dengan pengguna
+                - wawancara
+                - survei
+                - usability study
+                    menguji coba langsung produk kepada pengguna
+
+            secondary research: tidak langsung; observasi dengan data yang ada di internet, jurnal, atau buku
+
+        ### latihan melakukan survei
+            menentukan tema
+                misal: "mendesain aplikasi pemesanan untuk kedai kopi di bandung
+                I choose: design a payment app for a cafe in your hometown
+                          mendesaian aplikasi pembayaran di kafe lokal
+
+            merencanakan survei
+                - menetukan tujuan
+                    memahami pengalaman pengguna yeng berhubungan dengan tema aplikasi, seperti kebiasaan dan kebutuhan mereka, serta kebiasaan dan kebutuhan mereka serta masalah apa yang mereka hadapi
+                - menentukan audiens
+                - membuat pertanyaan
+
+            membuat survei
+                # DONE
+
+            membuat ringkasan hasil survey
+                # TODO
+
+
+    ## empathy map
+        adalah diagram yang digunakan untuk memetakan masalah yang dialami pengguna berdasarkan apa yang dikatakan, dipikirkan, dilakukan, dan dirasakan
+
+        this kind of diagram:
+            ╭─────────────────╮ ╭─────────────────╮
+            │                 │ │                 │
+            │                 │ │                 │
+            │      SAYS       │ │     THINKS      │
+            │                 │ │                 │
+            │                 │ │                 │
+            │           ╔═════════════╗           │
+            │           ║             ║           │
+            │           ║             ║           │
+            ╰───────────║    USER     ║───────────╯
+            ╭───────────║             ║───────────╮
+            │           ║             ║           │
+            │           ║             ║           │
+            │           ╚═════════════╝           │
+            │                 │ │                 │
+            │                 │ │                 │
+            │      DOES       │ │     FEELS       │
+            │                 │ │                 │
+            │                 │ │                 │
+            ╰─────────────────╯ ╰─────────────────╯
+
+        cara mudah untuk mengisi diagram tersebut
+            - USER: nama pengguna
+            - SAYS: masukkan kutipan kalimat dari pengguna tanpa mengubahnya. perhatikan pada kalimat yang  berhubungan dengan masalah dan keinginan pengguna
+            - THINKS: masukkan ringkasan dari apa yang diekspresikan pengguna. pengguna mungkin tidak menyebutkannya secara eksplisit, melainkan tersirat dari kata-kata yang ia tulis.
+            - DOES: detail langkah-langkah yang dilakukan pengguna dalam mencapai tujuan.
+            - FEELS: masukkan perasaan pengguna yang disebutkan, seperti frustasi, marah, gembira, dan lain sebagainya.
+
+        mine:
+            TODO
+
+
+    ## identifikasi masalah (pain point)
+        pain point; what?
+            masalah yang sampai membuat pengguna frustasi dan menghalangi pengguna untuk mendapatkan apa yang mereka butuhkan
+
+        example
+            - kesusahan membaca teks yang terlalu kecil
+            - bingung mencari lokasi checkout pada aplikasi marketplace
+            - iklan terlalu sering muncul dan sangat mengganggu
+
+        mine:
+            TODO
+
+
+    ## user persona
+        karakter fiksi yang digunakan untuk merepresentasikan tujuan, kebutuhan, dan karakteristik dari banyak pengguna
+        setiap persona akan mewakili pengguna dengan karakter yang mirip
+        kemiripan ini bisa dilihat dari kesamaan pain point yang dimilikinya
+        pada sebuah persona, terdapat beberapa data yang menggambarkan biografi singkat pengguna, seperti umur, pendidikan, tempat tinggal, dan pekerjaan
+
+        manfaat
+            - memudahkan anda untuk berinteraksi dengan stakeholder
+            - meningkatkan rasa empat dengan membuat karakter yang mudah diingat
+            - menceritakan bagaimana kehidupan sehari-hari dari pengguna
+            - merepresentasikan beberapa kelompok yang menggunakan aplikasi anda
+
+        ### latihan membuat user persona
+            langkah
+                - isi data biografi yang menggambarkan karakter dari pengguna
+                - isi quote dengan kalimat yang relevan dan sesuai dengan latar belakang pengguna
+                - isi pada bagian goals dengan beberapa tujuan yang ingin dicapai pengguna
+                - isi pada bagian frustations dengan masalah yang membuat pengguna frustasi
+                - isi bagian scenario dengan informasi tambahan yang diperlukan
+                - tambahkan foto atau avatar yang menggambarkan persona
+
+            mine:
+                TODO
+
+
+    ## user story
+        what
+            sebuah kalimat yang menunjukkan kebutuhan pengguna dalam mencapai tujuannya, diambil dari pov persona
+
+        format
+            sebagai seorang <role pengguna>, saya dapat <melakukan sesuatu>, supaya <mencapai tujuan>
+
+        example
+            sebagai seorang pembeli di marketplace, saya dapat mencari diskon dengan mudah, supaya dapat membeli dengan harga murah
+
+        mine:
+            TODO
+
+
+    ## user journey map
+        what
+            cara untuk mengetahui rangkaian aktivitas pengguna saat berinteraksi dengan produk
+
+        why
+            cara ini akan membantu anda untuk berempati kepada pengguna, sehingga anda menjadi tahu bagaimana langkah-langkah yang dialami pengguna untuk mencapai tujuannya
+
+        manfaat
+            - memudahkan UX designer untuk membuat alur yang mudah dan nyaman untuk pengguna mencapai tujuan
+            - mengurangi efek designer bias, yakni kecenderungan desiner untuk membuat produk sesuai dengan kebutuhan dan keinginan mereka sendiri, bukan keinginan pengguna
+            - mengidentifikasi pain point baru ketika pengguna mengikuti alur cerita
+            - menambah peluang untuk memperbaiki alur jika dirasa alur yang sekarang kuran menyenangkan
+
+        ### latihan membuat user journey map
+            langkah-langkah
+
+            mine:
+                TODO
+
+
+
+# konsep define: mendefinisikan masalah user (problem statement)
+    mendefinisikan masalah utama yang akan diselesaikan
+
+    how
+        melihat kembali data yang didapatkan pada tahap empathize kemudian buatlah intisarinya dalam bentuk problem statement
+
+    problem statement: sebuah kalimat pernyataan yang mendeskripsikan pokok masalah pengguna yang harus ditangani
+
+    sebuah problem statement sebaiknya jangan terlalu lebar sehingga sulit diimplementasikan pada desain -- juga jangan terlalu sempit
+
+    format
+        dimulai dari nama pengguna, kemudian sebutkan deskripsi singkat tentang karakter pengguna, lalu dilanjutkan dengan kebutuhan pengguna, dan diakhiri dengan alasan mengapa pengguna butuh produk tersebut
+
+    example
+        [Mulyono] adalah [seorang tukang ojek] yang membutuhkan [aplikasi untuk menerima order dari pelanggan] karena [ia tidak ingin menghabiskan waktu untuk menunggu terlalu lama di pangkalan]
+
+    manfaat
+        - problem statement menetapkan tujuan yang jelas dan benar-benar dibutuhkan pengguna, sehingga pembuatan produk bisa fokus menyelesaikan masalah tersebut
+        - problem statement dapat memahami kendala apa saja yang bisa terjadi yang mengganggu pengguna mencapai tujuannya
+        - problem statement membantu anda untuk membuat standar apakah sebuah produk sukses atau tidak
+
+
+
+# konsep ideation: menghasilkan ide untuk solusi
+    eksplorasi untuk menghasilkan ide yang bisa menjadi solusi dari masalah yang telah didefinisikan sebelumnya
+
+    tujuan
+        mendapatkan sebanyak mungkin alternatif solusi yang nantinya bisa diterapkan
+
+    do brainstorming
+    don't limit yourself: be as craetive as possible
+
+    evaluasi
+        - feasability       can be implemented?
+        - desirablility     user want?
+        - viability         profitable?
+
+
+    ## competitive audit
+        what
+            sebuah gambaran untuk mengetahui kelebihan dan kekurangan kompetitor
+
+        tipe kompetitor
+            - kompetitor langsung: perusahaan yang memiliki produk dan audiens yang mirip dengan anda
+            - kompetitor tidak langsung: perusahaan yang memiliki produk mirip, tetapi target audiens yang berbeda
+
+        manfaat
+            - memahami produk yang sudah ada di pasar dan posisi mereka
+            - memahami kekurangan kompetitor dan menjadikannya sebagai pelajaran supaya tidak terjadi pada produk anda
+            - memahami kelebihan dari masing-masing kompetitor dan mengombinasikannya sebagai inspirasi untuk produk anda
+            - menentukan posisi anda pada pasar dengan menciptakan nilai yang unik
+
+        batasan
+            - melumpuhkan kreativitas
+            - tergantung seberapa dalam menafsirkan data
+            - fitur yang berguna di kompetitor belum tentu cocok dengan produk anda, apalagi jika memiliki target yang berbeda
+            - jangan lakukan competitive audit sekali saja
