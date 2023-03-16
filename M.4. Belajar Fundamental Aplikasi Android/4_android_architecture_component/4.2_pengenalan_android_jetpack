@@ -1,0 +1,18 @@
+# what
+    kumpulan dari komponen library, tools, dan panduan untuk membuat aplikasi yang bagus
+        [https://android-developers.googleblog.com/2018/05/use-android-jetpack-to-accelerate-your.html]
+
+    terdiri dari beberapa paket library dengan awalan androidx yang terpisah dari API platform
+
+    menawarkan kompatibilitas dengan versi sebelumnya yang lebih sering diperbarui dibandingkan platform Android
+
+
+# keuntungan memakai jetpack
+    - mengikuti best practices
+    - mengurangi kode boilerplate
+    - mengatasi fragmentation
+        mengurangi percabangan kode untuk versi android berbeda
+
+
+# links
+    https://developer.android.com/jetpack

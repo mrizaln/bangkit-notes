@@ -1,0 +1,93 @@
+what
+    adalah salah satu bagian dari User Interface selain Activity
+        bentuknya hampir sama: memiliki class untuk kode logika dan tampilan XML
+        bedanya: kelasnya inherit ke Fragment dan tidak perlu didaftarkan ke dalam AndroidManifest.xml
+
+
+why
+    dapat membuat banyak tampilan tanpa berpindah-pindah Activity
+    modular: satu Activity bisa memiliki lebih dari satu Fragment
+    reusable: dapat menggunakan satu Fragment dalam banyak Activity
+
+
+code
+    menambahkan Fragment ke atas Activity
+
+    '''
+        val fragmentManager = supportFragmentManager
+        val exampleFragment = ExampleFragment()
+
+        fragmentManager
+            .beginTransaction()
+            .add(R.id.frame_container, exampleFragment)
+            .addToBackStack(null)
+            .commit()
+    '''
+
+            FragmentManager: kelas yang bertanggung jawab untuk mengelola Fragment ke dalam Activity
+            back stack: dapat diilustrasikan sebagai buku, di mana ketika Anda melakukan transaksi maka anda akan menambahkan buku baru di atasnya, kemudian ketika anda menekan tombol back, maka buku yang paling atas diambil
+
+
+
+lifecycle
+    states
+        - resumed       Fragment bisa dilihat ketika activity sedang berjalan
+        - paused        ketika ada Activity lain yang menutuppi sebagian dari activity dimana Fragment ditambahkan
+        - stopped       ketika Fragment tidak kelihatan di layar
+                            pada kondisi ini Fragment masih hidup dengan semua informasinya, akan tetapi sudah tidak kelihatan di layar dan akan dihancurkan
+
+
+        Activity State          Fragment Callbacks
+------------------------------------------------------------------------------------------
+                                    onAttach()
+                                        🡓
+                                    onCreate()
+          Created                       🡓
+                                  onCreateView()
+                                        🡓
+                                 onActivityCreate()         <<< Activity changing state
+                                        🡓
+------------------------------------------------------------------------------------------
+                                        🡓
+          Started                    onStart()
+                                        🡓
+------------------------------------------------------------------------------------------
+                                        🡓
+          Resumed                   onResume()
+                                        🡓
+------------------------------------------------------------------------------------------
+                                        🡓
+          Paused                     onPause()
+                                        🡓
+------------------------------------------------------------------------------------------
+                                        🡓
+          Stopped                    onStop()
+                                        🡓
+------------------------------------------------------------------------------------------
+                                        🡓
+                                  onDestroyView()
+         Destroyed                      🡓
+                                    onDestroy()
+                                        🡓
+                                    onDetach()
+------------------------------------------------------------------------------------------
+
+
+perbedaan kode Activity dan Fragment
+                            Activity                  Fragment
+------------------------------------------------------------------------------------------
+Context                       this          requireActivity()/getActivity()
+Fungsi Utama                onCreate                onViewCreated
+Cara mengambil view       findViewById            view.findViewById
+
+
+    '''
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+     
+        val btnProfile = view.findViewById(R.id.btn_profile)
+        btnProfile.setOnClickListener{
+            Toast.makeText(requireActivity(), "Halo", Toast.LENGTH_SHORT).show()
+        }
+    }
+    '''

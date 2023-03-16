@@ -1,0 +1,62 @@
+# ViewModel
+    before
+        UI controller
+            - berfungsi untukm menampilkan data ke UI, memberi aksi terhadap tindakan pengguna atau menangani komunikasi sistem informasi seperti permintaan permission atau perizinan
+            - memiliki kemampuan untuk mempertahankan data
+
+    ## impelementasi ViewModel
+        - membantu UI controller menyiapkan data yang akan ditampilkan ke UI
+        - object ViewModel akan selalu dipertahankan selama ada configuration changes
+
+    ## lifecycle dari ViewModel
+
+        Activity created        [ onCreate ]        │
+                                [ onStart  ]        │
+                                [ onResume ]        │
+        Activity rotated ────────────────────────── │ ViewModel
+                                [ onPause  ]        │ Scope
+                                 [ onStop ]         │
+                               [ onDestroy  ]       │
+                                                    │
+                                [ onCreate ]        │
+                                [ onStart  ]        │
+                                [ onResume ]        │
+            finish() ────────────────────────────── │
+                                [ onPause  ]        │
+                                 [ onStop ]         │
+                               [ onDestroy  ]       │
+            finished                                ▼
+                                                onCleared()
+
+
+    ## perbedaan ViewModel dengan savedInstanceState
+        ┌──────────────────────┬──────────────────────────┬───────────────────────────┐
+        │██████████████████████│ ViewModel                │ savedInstanceState        │
+        ├──────────────────────┼──────────────────────────┼───────────────────────────┤
+        │ storage              │ memory                   │ disk                      │
+        ├──────────────────────┼──────────────────────────┼───────────────────────────┤
+        │ bertahan dari        │                          │                           │
+        │ configuration        │ ya                       │ ya                        │
+        │ change               │                          │                           │
+        ├──────────────────────┼──────────────────────────┼───────────────────────────┤
+        │ bertahan dari        │                          │                           │
+        │ proses mematikan     │ tidak                    │ ya                        │
+        │ app yang dimulai     │                          │                           │
+        │ dari sistem          │                          │                           │
+        ├──────────────────────┼──────────────────────────┼───────────────────────────┤
+        │ bertahan dari        │                          │                           │
+        │ kesalahan aktivitas  │ tidak                    │ tidak                     │
+        │ user atau onFinish() │                          │                           │
+        ├──────────────────────┼──────────────────────────┼───────────────────────────┤
+        │                      │ obyek kompleks baik saja │ hanya untuk tipe primitif │
+        │ keterbatasan data    │ namun ruang dibatasi     │ dan object kecil dan      │
+        │                      │ memory yang tersedia     │ sederhana                 │
+        ├──────────────────────┼──────────────────────────┼───────────────────────────┤
+        │ waktu read/write     │ cepat                    │ lambat                    │
+        └──────────────────────┴──────────────────────────┴───────────────────────────┘
+            [https://developer.android.com/topic/libraries/architecture/viewmodel]
+
+
+
+# Lifecycle
+    komponen android.arch.lifecyle menyediakan kelas dan interface yang membantu anda mengatasi masalah mengelola banyak komponen di dalam metode Lifecycle sepert onStart() dan onStop()

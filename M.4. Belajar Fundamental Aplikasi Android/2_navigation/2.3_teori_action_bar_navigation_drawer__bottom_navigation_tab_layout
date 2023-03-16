@@ -1,0 +1,47 @@
+# AppBar
+    fungsi
+        - memberikan ruangan kepada identitas app dan juga mengindikasikan lokasi pengguna pada saat menjalankan aplikasi
+        - akses ke beberapa action penting dengan lebih mudah seperti action pencarian
+        - sebagai navigation dan switch antar view
+
+    ## ActionBar
+        AppBar yang tampil pada Activity ketika menggunakan tema default
+
+    ## Toolbar
+        ActionBar in steroids
+        to use: atur theme menjadi NoActionBar
+
+
+# Navigation Drawer
+    what
+        panel yang berada di sisi kiri layar perangkat Android
+
+    used if
+        - aplikasi memiliki top level views
+        - jika andaingin memberikan kecepatan kepada pengguna untuk mengakses menu yang tidak terhubung secara langsung
+        - bila anda ingin kembali ke halamam utama dengan cepat
+        - jika anda ingin menempatkan menu yang jarang diakses
+
+
+# Bottom Navigation
+    what
+        baris navigasi yang memungkinkan untuk melakukan perpindahan antar tujuan navigasi dalam suatu aplikasi
+
+    used if
+        - fitur menu utama harus dapat diakses dari mana saja di aplikasi
+        - hanya terdiri dari 3-5 menu
+        - device yang digunakan untuk ponsel atau tablet
+
+    not recommended if
+        - hanya mempunyai tugas tunggal atau satu menu saja
+        - menu yang digunakan berfungsi untuk preferensi atau pengaturan pengguna
+
+
+# TabLayout
+    used if
+        - fitur antar menu memiliki kemiripan atau berhubungan dalam level yang sama
+        - ingin berpindah antar menu dengan cepat menggunakan swip
+
+    not recommended if
+        - antar menu memiliki level yang berbeda dan tidak saling berhubungan
+        - di dalam menu terdapat fitur yang mengggunakan swipe juga, sehingga bertabrakan dengan swipe pada tab

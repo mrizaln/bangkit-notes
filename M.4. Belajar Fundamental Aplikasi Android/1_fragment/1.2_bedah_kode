@@ -1,0 +1,77 @@
+# latihan fragment di Activity
+    FrameLayout
+        semua komponen view di dalam FrameLayout bersifat menumpuk
+        dengan karakteristik seperti ini, FrameLayout merupakan sebuah layout yang paling optimal dalam proses manipulasi penampilan objek fragment ke layar pengguna
+
+
+    @HomeFragment
+    onCreateView
+        layout interface didefinisikan dan ditransformasikan dari layout berupa file xml ke dalam object view dengan menggunakan metode inflate()
+
+        inflate di fragment
+            inflater.inflate() merupakan object dari LayoutInflater yang berfungsi untuk mengubah layout xml ke dalam bentuk object viewgroup atau widget melalui pemanggilan metode inflate()
+            sama seperti setContentView pada Activity, fungsi inflate di sini yaitu untuk menampilkan layout dari Fragment, di mana layout yang ditampilkan di sini yaitu fragment_home
+
+            parameters:
+                - resource: Int             layout yang ingin diubah
+                - root: ViewGroup?          root dari layout Activity
+                - attachToRoot: Boolean     apakah kita akan menempelkan layout kita ke dalam root dari parent layout yang ada
+                                                true:   akan ditempelkan ke dalam parent layout yang ada
+                                                false:  hanya akan menghasilkan nilai balik dalam bentuk object view saja
+                                            default: false
+
+    @HomeFragment
+    onViewCreated
+        akan bekerja setelah metode onCreateView()
+        di sini kita bisa gunakan untuk inisialisasi view, dan juga mengatur action-nya (set listener)
+
+        findViewById di Fragment
+            pake: view.findViewById(<id>)
+
+
+    @MainActivity
+    FragmentTransaction
+        proses penempelan object HomeFragment sehingga dapat ditampilkan ke layar
+        kita menggunakan instance dari FragmentManager yang merupakan antarmuka untuk mengorganisir object Fragment yang terdapat di dalam sebuah activity
+
+        FragmentTransaction merupakan fungsi untuk melakukan operasi pada Fragment seperti add(), replace(), commit(), etc.
+
+
+
+
+# latihan flexible Fragment di satu Activity
+    @HomeFragment
+    FragmentTransaction 
+        berbeda dengan Activity yang menggunakan supportFragmentManager, Fragment menggunakan parentFragmentManager untuk mendapatkan FragmentManager dari Activity
+        setelah mendapatkannnya, anda dapat memulai transaksi pergantian fragment
+
+    @HomeFragment
+    addToBackStack
+        to go back to previous Fragment when go back
+
+
+
+
+# latihan mengirim data antar Fragment
+    ## using Bundle
+        @CategoryFragment
+        send
+            val mBundle = Bundle()
+            mBundle.putString(DetailCategoryFragment.EXTRA_NAME, "Lifestyle")
+
+        @DetailCategoryFragment
+        get
+            val categoryName = arguments?.getString(EXTRA_NAME)
+
+    ## using getter/setter
+        @CategoryFragment
+        send
+            val description = "Kategori ini akan berisi produk-produk lifestyle"
+            mDetailCategoryFragment.description = description
+
+        @DetailCategoryFragment
+        get
+            just use it; already created
+
+
+# latihan fragment untuk dialog
