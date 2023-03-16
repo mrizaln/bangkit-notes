@@ -1,0 +1,54 @@
+SKPL: spesifikasi kebutuhan perangkat lunak
+SRS: software requirement specification
+    menjelaskan cara kerja fungsional dan non fungsional
+
+advanteges
+    UI/UX designer dapat gambaran
+    tester dapat panduan
+    pengguna akhir akan mendapatkan gambaran umum
+    investor akan mendapat gambaran umum
+
+things in SRS:
+    tujuan
+    deskripsi umum
+    kebutuhan fungsional dan non fungsional
+    performa aplikasi dalam proses produksi
+    antarmuka eksternal
+    batasan sistem aplikasi yang akan dibuat
+
+kebutuhan fungsional:
+    fungsi/fitur aplikasi
+kebutuhan non-fungsional:
+    mendukung kebutuhan fungsional yang ada
+    kinerja, keandalan, keamanan
+
+struktur penulisan dokumen SKPL (IEEE 1998)
+    pengantar
+    glosarium
+    kebutuhan pengguna
+    sistem arsitektur
+    spesifikasi kebutuhan sistem
+    model sistem
+    rencana pengembangan sistem
+    apendiks
+
+computational thinking
+    decomposition
+    pattern recognition
+    abstraction
+    algorithm
+    evaluation
+
+tips sikap kerja dalam kolaborasi perencanaan aplikasi dengan tim
+    efektifkan komunikasi
+    membangun kepercayaan dalam tim
+    berikan semangat kerja
+    utamakan diskusi
+    hindari sikap tidak tanggap (slow response)
+    menentukan prioritas
+        kumpulkan to-do list
+        identifikasi to-do urgent
+        perhitungkan nilai tiap to-do
+        urutkan to-do berdasarkan usaha yang harus dikeluarkan
+        fleksibel dan mudah beradaptasi
+        hapus to-do yang bisa dihapus

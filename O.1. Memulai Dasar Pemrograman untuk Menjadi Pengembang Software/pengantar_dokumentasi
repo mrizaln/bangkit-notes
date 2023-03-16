@@ -1,0 +1,41 @@
+pengarsipan versi perangkat lunak
+    tool: version control system (VSC)
+
+
+style guide
+    kumpulan peraturan mengenai bagaimana cara penulisan kode yang baik bagi developer
+
+    why
+        konsistensi
+        membantu proses onboarding
+        menambah wawasan
+        membantu proses code review
+
+
+dokumentasi teknis
+    mengacu pada dokumen yang melibatkan informasi dan data terkait produk
+
+    jenis
+        end-user support
+        marketing support
+        development support
+        organization support
+
+    manfaat
+        meningkatkan retensi pengguna
+        dapat menghemat waktu dan tenaga
+        berpotensi untuk meningkatkan penjualan produk
+
+    how to
+        tentukan target
+        pikirkan dengan matang dan jelas apa yang ingin disampaikan
+        gunakan outline atau kerangka tulisan terlebih dahulu
+        menggunakan ilustrasi dan teks
+        baca kembali, jika ada yang kurang, revisi
+
+
+tips cara mengomunikasikan dokumentasi kepada stakeholders
+    pastikan yang ditulis dalam dokumtasi sudah benar dan sudah sesuai
+    ketika menulis dokumentasi teknis, jangan terlalu berpikir tertutup
+    ketika menyampaikan harus dengan adab
+    pastikan mendokumentasikan tesknis aplikasi secara online
