@@ -1,0 +1,24 @@
+what
+    sebuah rangkaian sirkuit digital yang berguna untuk memproses komponen IC, transistor, dkk.
+
+jenis
+       AND                  OR                    NOT
+    A   B   Out         A   B   Out             In  Out
+    1   1    1          1   1    1              1    0
+    1   0    0          1   0    1              0    1
+    0   1    0          0   1    1
+    0   0    0          0   0    0
+
+
+    NAND = NOT AND
+        X = !(A & B) = !A | !B
+
+    NOR = NOT OR
+        X = !(A | B) = !A & !B
+
+    XOR = Exclusive OR
+        X = !A & B  |  A & !B
+
+    XNOR = NOT XOR
+        X = !(!A & B  |  A & !B) = !(!A & B) & !(A & !B) = (A | !B) & (!A | B) = A!A | AB | !A!B | B!B = AB | !A!B = AB | !(A | B)
+

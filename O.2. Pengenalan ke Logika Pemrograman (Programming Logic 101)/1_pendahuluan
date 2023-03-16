@@ -1,0 +1,25 @@
+logika pemrograman
+    sebuah kemampuan dasar yang menerapkan pemahaman operasi logika terhadap data dalam ilmu komputer
+
+    jenis
+        logika aritmatika
+        logika perbandingan
+        logika perulangan
+
+algoritma
+    langkah-langkah penyelesaian masalah yang terangkai secara masuk akal, urut, dan sistematis
+
+    hal yang harus diperhatikan
+        finiteness (keterbatasan)
+        definiteness (kepastian)
+        effectiveness (efektivitas)
+        input (masukan)
+        output (keluaran)
+
+penalaran logika induktif dan deduktif
+    logika induktif
+        logika pendukung pembuktian: generalisasi berdasarkan pengalaman, pengamatan, dan fakta
+    
+    logika deduktif
+        sistem yang tepat dan teratur bertujuan untuk memberikan dukungan pasti untuk suatu kesimpulan
+        silogisme: menarik kesimpulan dari premis umum
