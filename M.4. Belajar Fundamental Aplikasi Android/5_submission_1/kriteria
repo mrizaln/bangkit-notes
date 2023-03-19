@@ -1,0 +1,39 @@
+Fitur yang harus ada pada aplikasi:
+    1. Search User
+        Menampilkan list data user dari API menggunakan RecyclerView dengan data minimal foto avatar dan username.
+        Pencarian user menggunakan data dari API berjalan dengan baik.
+        Pengguna dapat melihat halaman detail dari hasil daftar pencarian.
+
+    2. Detail User
+        Terdapat informasi detail dari seorang user. Berikut beberapa informasi yang wajib ditampilkan pada halaman aplikasi:
+            Foto Avatar
+            Username
+            Nama
+            Jumlah Followers
+            Jumlah Following
+        Menampilkan fragment List Follower & List Following yang diambil dari API.
+        Menggunakan Tab Layout dan ViewPager sebagai navigasi antara halaman List Follower dan List Following.
+
+    3. Terdapat indikator loading saat aplikasi memuat data di semua halaman (list, detail, following & follower).
+
+
+Saran
+    1. Menerapkan tampilan aplikasi yang sesuai standar:
+        Tampilan aplikasi memiliki width, height, margin, dan padding yang sesuai.
+        Pemilihan warna yang sesuai tema aplikasi.
+        Tidak ada komponen yang saling bertumpuk.
+        Penggunaan komponen yang sesuai dengan fungsinya.
+        Contoh : Komponen ImageView yang dijadikan sebagai button navigasi.
+        Menggunakan SearchView pada fitur pencarian.
+        Aplikasi bisa memberikan pesan eror jika data tidak berhasil ditampilkan.
+
+    2. Menuliskan kode dengan bersih.
+        Bersihkan comment dan kode yang tidak digunakan.
+        Indentasi yang sesuai.
+        Menghapus import yang tidak digunakan.
+
+    3. Aplikasi bisa menjaga data yang sudah dimuat ketika terjadi pergantian orientasi dari potrait ke landscape atau sebaliknya.
+
+    4. Mengasah penggunaan library networking selain LoopJ (seperti Retrofit, Fast Android Networking, dsb).
+
+    5. Menerapkan Android Architecture Component (minimal ViewModel dan LiveData) dengan benar.
