@@ -1,0 +1,17 @@
+# what
+    testing = testing
+
+
+# jenis
+    ## unit test
+        tahapan testing yang menguji suatu komponen/unit dari aplikasi secara individu
+        individu means: a class, a method, or a module
+
+        unit testing directory: <module-name>/src/test/java/
+
+        unit testing berjalan pada local JVM dan tidak mempunyai akses ke API Android Framework
+
+    ## UI test
+        aplikasi diuji sesuai dengan kondisi  user ketika berinteraksi pada sebuah aplikasi.
+
+        UI test directory: <module-name>/src/androidTest/java/

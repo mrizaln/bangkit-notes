@@ -1,0 +1,35 @@
+# cakupan ui test
+    - ui banyak komponen
+    - selama proses pengujian, ekemen properti yang menempel pada sebuah komponen ui akan memberi pengaruh terhadap state dari komponen tersebut
+    - pengujian ui secara otomatis mampu melakukan pemberian input dan event pada komponen seperti click(), pressKey(), dll
+    - pengujian menekankan perbandingan antara proses yang dilakukan dengan hasil yang diharapkan dalam sebuah skenario penggunaan
+    - pengujian ui secara otomatis bergantung penuh pada teknologi yang digunakan
+
+
+
+# espresso
+    ui test framework
+
+    [https://android-developers.googleblog.com/2017/07/android-testing-support-library-10-is.html]
+
+    3 komponen utama dari espresso
+        - ViewMatchers [onView(ViewMatcher)]        menemukan elemen atau komponen antarmuka yang diuji
+        - ViewActions  [perform(ViewAction)]        memberikan event untuk melakukan sebuah aksi pada komponen antarmuka yang diuji
+        - ViewAssertions                            melakukan pemeriksaan terhadap sebuah kondisi atau state dari komponen yang diuji
+
+
+    built in
+
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+
+# links
+    [https://developer.android.com/training/testing/ui-testing/espresso-testing.html]
+    [https://developer.android.com/studio/test/espresso-test-recorder.html]
+    [http://www.vogella.com/tutorials/AndroidTestingEspresso/article.html#espresso_runningespressotests]
+    [https://guides.codepath.com/android/UI-Testing-with-Espresso]
