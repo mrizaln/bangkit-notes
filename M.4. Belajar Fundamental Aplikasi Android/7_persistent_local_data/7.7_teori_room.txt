@@ -1,0 +1,99 @@
+# what
+    abstraksi dari SQLite untuk mengelola database di lokal
+
+    see also: [../4_android_architecture_component/4.3_komponen_android_jetpack.txt]
+              [../4_android_architecture_component/4.4_pengenalan_android_architecture_component.txt]
+              [./7.1_introduction.txt]
+
+
+# komponen room
+    - database      database handler, main access point to database
+                    kelas yang diberi anotasi @Database harus memenuhi ketentuan berikut
+                        > harus menjadi kelas abstrak yang diberi turunan kelas RoomDatabase
+                        > sertakan daftar entitas yang berkaitan dengan database dalam anotasi
+                        > berisi metode abstrak yang memiliki 0 argumen dan mengambalikan kelas @Dao
+
+    - entity        merepresentasikan tabel yang ada pada database anda
+    - DAO           (Data Access Object) berisi metode yang digunakan untuk mengakses database
+
+
+# hubungan antar komponen room
+
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃                       ROOM DATABASE                           ┃
+    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+        ▲  │
+        │  │            ┌───────────────┐       ┌───────────────┐
+        │  │            │  Data Access  │       │   Entities    │
+        │  │            │    Objects    │       │               │
+        │  │            └───────────────┘       └───────────────┘
+        │  │                   ▲ │                     ▲ │
+        │  ▼                   │ ▼                     │ ▼
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃                      REST OF THE APP                          ┃
+    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+
+    example of database config with 1 DAO and 1 entity
+
+        entity
+        ```kotlin
+            @Entity
+            class User (
+                @PrimaryKey
+                var uid: Long,
+                @ColumnInfo(name = "first_name")
+                var firstName: String,
+                @ColumnInfo(name = "last_name")
+                var lastName: String
+            )
+        ```
+
+        DAO
+        ```kotlin
+            @Dao
+            interface UserDao {
+                @Query("SELECT * FROM user")
+                val getAll: List<User>
+
+                @Query("SELECT * FROM user WHERE uid IN (:userIds)")
+                fun loadAllByIds(userIds: IntArray): List<User>
+
+                @Query("SELECT * FROM user WHERE first_name LIKE :first AND " +
+                        "last_name LIKE :last LIMIT 1")
+                fun findByName(first: String, last: String): User
+
+                @Insert
+                fun insertAll(vararg users: User)
+
+                @Delete
+                fun delete(user: User)
+            }
+        ```
+
+        database
+        ```kotlin
+            @Database(entities = [User::class], version = 1)
+            abstract class AppDatabase : RoomDatabase() {
+                abstract fun userDao(): UserDao
+            }
+        ```
+
+        main
+        ```kotlin
+            var db: AppDatabase = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database-name").build()
+        ```
+
+
+# perbedaan room dengan database lain
+    ORM Library:  Object Relational Mapping library
+                  database object -> java object
+
+    - ada verifikasi query SQLite di compile time
+    - saat skema database berubah, tidak perlu memperbarui query SQL yang sudah ada pada aplikasi sebelumnya secara manual
+    - tidak banyak boilerplate code konversi query SQL ke object java
+    - room dibangun untuk bekerja dengan LiveData untuk observasi data, sedangkan SQLite perlu melakukan konfigurasi tambahan
+
+
+# links
+    [https://developer.android.com/training/data-storage/room]

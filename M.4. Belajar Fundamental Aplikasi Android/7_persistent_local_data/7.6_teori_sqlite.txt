@@ -1,0 +1,214 @@
+# what
+    open source database yang mendukung operasi relasi standar yang umum terdapat pada engine database seperti sintaks SQL dan operasi transaksi
+    berukuran kecil dan mempu berjalan pada peranti dengan memory terbatas seperti smartphone
+
+    hanya mendukung beberapa tipe data
+        TEXT
+        INT
+        REAL
+
+    available by default in Android phones
+    no authentication or administration setup required
+
+    package: [android.database.sqlite]
+
+    private: hanya bisa diakses oleh aplikasi itu sendiri
+
+    mendukung penyimpanan dalam jumlah banyak berikut dengan optimasi untuk query dan input datanya
+
+    location: PATH_APP_DIRECTORY/data/APP_NAME/databases/FILENAME
+
+
+# pembuatan dan pembaruan database dengan sangat mudah
+    contoh
+    ```kotlin
+        class BookContract {
+            class BookColumns : BaseColumns {
+                companion object {
+                    val TABLE_NAME         = "book"
+                    val COLUMN_NAME_TITLE  = "title"
+                    val COLUMN_NAME_AUTHOR = "author"
+                    val COLUMN_NAME_GENRE  = "genre"
+                    val COLUMN_NAME_PAGES  = "pages"
+                }
+            }
+        }
+    ```
+
+    notes:
+        - setiap kolom yang bersifat incremental dan menjadi primary key seperti ID pada SQLite haruslah berbentuk "_id"
+        - dengan mengimplementasikan BaseColumns, kolom _id akan secara otomatis menjadi bagian dari kolom yang ditentukan pada sebuah tabel
+
+
+    API untuk pembuatan dan perbaruan: SQLiteOpenHelper
+    (diperuntukkan menjalankan fungsi-fungsi dalam data definition language (DDL) sebuah database)
+    ```kotlin
+        class BooksHelper(
+            context: Context
+        ) : SQLiteOpenHelper(
+            context,
+            DATABASE_NAME,
+            null,
+            DATABASE_VERSION
+        ) {
+
+            companion object {
+                //Jika kamu mengubah skema database maka harus dinaikkan versi databasenya.
+                val DATABASE_VERSION = 1
+                val DATABASE_NAME = "Book.db"
+            }
+
+            override fun onCreate(db: SQLiteDatabase) {
+                db.execSQL(SQL_CREATE_ENTRIES)
+            }
+
+            override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+                //Method ini untuk melakukan proses upgrade pada perubahan tabel dan skema database. Fokus migrasi data akan dilakukan disini
+                db.execSQL(SQL_DELETE_ENTRIES)
+                onCreate(db)
+            }
+
+            override fun onDowngrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+                onUpgrade(db, oldVersion, newVersion)
+            }
+        }
+    ```
+
+    notes:
+        - SQL_CREATE_ENTRIES        statement untuk pembuatan database
+            misal
+            ```kotlin
+                private val SQL_CREATE_ENTRIES = "CREATE TABLE ${BookColums.TABLE_NAME}" +
+                                                 " (${BookColums._ID} INTEGER PRIMARY KEY," +
+                                                 " ${BookColums.COLUMN_NAME_TITLE} TEXT," +
+                                                 " ${BookColums.COLUMN_NAME_AUTHOR} TEXT," +
+                                                 " ${BookColums.COLUMN_NAME_GENRE} TEXT," +
+                                                 " ${BookColums.COLUMN_NAME_PAGES} INT)"
+            ```
+
+        - SQL_DELETE_ENTRIES        statement penghapusan database
+            misal
+                ```kotlin
+                    private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${BookColums.TABLE_NAME}"
+                ```
+    ## links
+        [SQLiteOpenHelper](https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html)
+
+
+# proses manipulasi data pada tabel
+    Api manipulasi data di dalam SQLiteDatabase
+    (data manipulation language DML) CRUD
+
+    APIs: query(), insert(), update(), delete()
+
+
+    ## CREATE
+        ```kotlin
+            // Gets the data repository in write mode
+            val db = mDbHelper.getWritableDatabase()
+
+            // Create a new map of values, where column names are the keys
+            val values = ContentValues()
+            values.put(BookColums.COLUMN_NAME_TITLE, "Clean Code: A Handbook of Agile Software Craftsmanship")
+            values.put(BookColums.COLUMN_NAME_AUTHOR, "Robert C. Martin")
+            values.put(BookColums.COLUMN_NAME_GENRE, "Programming")
+            values.put(BookColums.COLUMN_NAME_PAGES, 434)
+
+            // Insert the new row, returning the primary key value of the new row
+            val newRowId = db.insert(BookColums.TABLE_NAME, null, values)
+        ```
+
+
+    ## READ
+        SQLiteDatabase::query()
+        ```kotlin
+            var db = mDbHelper.getReadableDatabase()
+
+            // Definisikan kolom mana saja yang akan digunakan untuk menampilkan data
+            var projection = arrayOf(
+                BookColums._ID,
+                BookColums.COLUMN_NAME_TITLE,
+                BookColums.COLUMN_NAME_AUTHOR,
+                BookColums.COLUMN_NAME_GENRE
+            )
+
+            // Jika ada filter pada hasil yang diharapkan maka kita menambahkan klausa WHERE "author" LIKE 'Stephen'
+            var selection = BookColums.COLUMN_NAME_AUTHOR + " LIKE ?"
+            var selectionArgs = arrayOf("Stephen")
+
+            // Lalu tentukan bagaimana hasil query yang didapatkan diurutkan
+            var sortOrder = BookColums.COLUMN_NAME_TITLE + " DESC"
+
+            // query
+            var cursor = db.query(
+                    BookColums.TABLE_NAME,  // Tabel yang digunakan
+                    projection,             // Kolom yang ingin ditampilkan
+                    selection,              // Kolom yang akan kita seleksi untuk kebutuhan filter dalam klausa WHERE
+                    selectionArgs,          // Nilai pembanding untuk klausa WHERE untuk proses seleksi
+                    null,                   // apakah akan dilakukan pengelompokan hasil (group), null untuk tidak
+                    null,                   // apakah dilakukan proses filter berdasarkan hasil pengelompokan, null untuk tidak
+                    sortOrder               // Urutan hasil yang diharapkan
+            )
+
+            if (cursor.count()>0) {
+                do {
+                    bookColums = BookColums()
+                    bookColums.setId(cursor.getInt(cursor.getColumnIndex(BookColums._ID)))
+                    bookColums.setTitle(cursor.getString(cursor.getColumnIndex(BookColums.COLUMN_NAME_TITLE)))
+                    bookColums.setAuthor(cursor.getString(cursor.getColumnIndex(BookColums.COLUMN_NAME_AUTHOR)))
+                    bookColums.setGenre(cursor.getString(cursor.getColumnIndex(BookColums.COLUMN_NAME_GENRE)))
+                    bookColums.setPages(cursor.getInt(cursor.getColumnIndex(BookColums.COLUMN_NAME_PAGES)))
+                    arrayList.add(bookColums)
+                    cursor.moveToNext()
+                } while (!cursor.isAfterLast)
+            }
+        ```
+
+        SQLiteDatabase::rawQuery()
+        ```kotlin
+            database.rawQuery("SELECT * FROM ${BookColums.TABLE_NAME} ORDER BY ${BookColums.COLUMN_NAME_PAGES} DESC", null)
+        ```
+
+
+    ## UPDATE
+        SQLiteDatabase::update()
+        ```kotlin
+            val db = mDbHelper.getWritableDatabase()
+
+            // Nilai update untuk kolom
+            val values =  ContentValues()
+            values.put(BookColums.COLUMN_NAME_TITLE, title)
+
+            // Klausa kondisi untuk mengupdate data dengan kriteria tertentu
+            val selection = BookColums.COLUMN_NAME_GENRE + " = ?"
+            val selectionArgs = arrayOf("Programming")
+
+            int count = db.update(
+                BookColums.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs
+        ```
+
+
+    ## DELETE
+        SQLiteDatabase::delete()
+        ```kotlin
+            // Definisikan proses seleksi 'where' dari query.
+            val selection = BookColums.COLUMN_NAME_AUTHOR + " LIKE ?"
+
+            // Argumen yang ditentukan.
+            val selectionArgs = arrayOf("Hirata")
+
+            // Eksekusi SQLstatement
+            db.delete(BookColums.TABLE_NAME, selection, selectionArgs)
+        ```
+
+
+# keamanan database
+    SQLiteCipher    ->  256-bit AES
+    [https://www.zetetic.net/sqlcipher/sqlcipher-for-android/]
+
+
+# links
+    [https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html]

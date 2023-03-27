@@ -1,0 +1,64 @@
+# what
+    mekaniseme penyimpanan key-value sederhana
+    bersifat atomik -> tiap data berdiri sendiri
+
+
+# implementasi SharedPreferences
+    3 hal yang harus diketahui
+        - membuat SharedPreferences
+            ```kotlin
+                var context = activity
+                var sharedPref = context.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+            ```
+
+        - meyimpan data
+            ```kotlin
+                val editor = sharedPref.edit()
+                editor.putInt(getString(R.string.saved_high_score), newHighScore)
+                editor.commit()     // synchronous save (since API level 1)
+                // editor.apply()      // asynchronous save (since API level 9)
+            ```
+
+        - membaca data
+            ```kotlin
+                var defaultValue = resources.getInteger(R.string.saved_high_score_default)
+                var highScore = sharedPref.getInt(getString(R.string.saved_high_score), defaultValue)
+            ```
+
+
+# EncryptedSharedPreferences
+    perlu menambahkan library Jetpack Security
+    ```(build.gradle)
+        implementation "androidx.security:security-crypto:1.0.0-rc02"
+    ```
+
+    API level 23 up only [pastikan minSdkVersion minimal bernilai 23]
+
+    usage (AES-GCM 256)
+    ```kotlin
+        val spec = KeyGenParameterSpec.Builder(
+            MasterKey.DEFAULT_MASTER_KEY_ALIAS,
+            KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+        )
+            .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+            .setKeySize(MasterKey.DEFAULT_AES_GCM_MASTER_KEY_SIZE)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+            .build()
+
+        val masterKey = MasterKey.Builder(context)
+            .setKeyGenParameterSpec(spec)
+            .build()
+
+        private var pref: SharedPreferences = EncryptedSharedPreferences.create(
+            context,
+            "Session",
+            masterKey,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+    ```
+
+
+# links
+    [https://developer.android.com/training/basics/data-storage/shared-preferences.html]
+    [https://developer.android.com/reference/android/content/SharedPreferences.Editor.html]

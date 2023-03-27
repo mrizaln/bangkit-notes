@@ -1,0 +1,94 @@
+# teori file storage
+    2 macam storage
+        - app-specific storage
+        - shared storage
+
+    see: [7.1_introduction.txt]
+
+    ## app-specific storage
+        - dapat diakses dengan menggunakan
+            getFilesDir()/getCacheDir()                     [internal] (/data/user/0/<package_name>/files/)
+            getExternalFilesDir()/getExternalCacheDir()     [external] (/storage/emulated/0/Android/data/<package_name>/files/)
+
+        - tidak membutuhkan permission apapun (kecuali Android < v4.4 untuk eksternal)
+
+
+    ## shared storage
+        - biasanya berupa foto, suara, video, dan dokumen
+        - dir: /storage/emulated/0/
+        - dapat diakses menggunakan MediaStore API untuk file media seperti foto, audio, dan video, serta menggunakan Storage Access Framework (SAF) untuk dokumen dan file lain
+        - membutuhkan permission READ_EXTERNAL_STORAGE untuk MediaStore (Android v > 11) dan tambahan permission WRITE_EXTERNAL_STORAGE (Android v < 10)
+        - SAF tidak memerlukan permission
+
+
+# menyimpan data di App storage
+    internal (getFilesDir())
+
+    ```kotlin
+        val filename = "myfile"
+        val fileContents = "Hello world!"
+        context.openFileOutput(filename, Context.MODE_PRIVATE).use {
+                it.write(fileContents.toByteArray())
+        }
+    ```
+
+    cache (getCacheDir())
+
+    ```kotlin
+        fun getTempFile(context: Context, url: String): File {
+            val file: File
+            try {
+                val fileName = Uri.parse(url).getLastPathSegment()
+                file = File.createTempFile(fileName, null, context.cacheDir)
+            } catch (e: IOException) {
+                // Error while creating file
+            }
+
+            return file
+        }
+    ```
+
+
+# menyimpan data di shared storage dengan MediaStore
+    ```kotlin
+        // Mendapatkan Content Resolver
+        val resolver = applicationContext.contentResolver
+
+        // Mencari semua file audio di shared storage.
+        val photoCollection =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                MediaStore.Audio.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
+            } else {
+                MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+            }
+
+        // Membuat ContentValue untuk menambahkan audio baru.
+        val newPhotoDetails = ContentValues().apply {
+            put(MediaStore.Audio.Media.DISPLAY_NAME, "My Photo.mp3")
+        }
+
+        // Eksekusi menambahkan audio baru ke shared storage dan menyimpan URI-nya.
+        val myPhotoUri = resolver.insert(photoCollection, newPhotoDetails)
+    ```
+
+
+# menyimpan data di shared storage dengan Storage Access Framework (SAF)
+    ```kotlin
+        const val CREATE_FILE = 1
+
+        private fun createFile(pickerInitialUri: Uri) {
+            val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = "application/pdf"
+                putExtra(Intent.EXTRA_TITLE, "invoice.pdf")
+                putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri)
+            }
+            startActivityForResult(intent, CREATE_FILE)
+        }
+    ```
+
+
+# links
+    [https://developer.android.com/training/data-storage/app-specific]
+    [https://developer.android.com/training/data-storage/shared]
+    [https://www.youtube.com/watch?v=RjyYCUW-9tY]

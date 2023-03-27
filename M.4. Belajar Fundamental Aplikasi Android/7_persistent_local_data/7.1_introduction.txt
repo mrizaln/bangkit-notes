@@ -1,0 +1,67 @@
+# mekanisme penyimpanan data di android
+    - onSavedInstanceState
+        menyimpan data ketika aplikasi dibuka saja
+            see also: [../4_android_architecture_component/4.5_teori_viewmodel_dan_lifecycle.txt]
+
+    - DataStore
+        menyimpan tipe data primitif yang tidak berelasi satu sama lain
+        key-value
+        meyimpan pengaturan aplikasi
+        persistent
+        hilang saat aplikasi di-uninstall
+
+    - SQLite Database
+        good old SQL, but light (in terms of storage)
+        menyimpan data kompleks
+        persistent
+        hilang saat aplikasi di-uninstall
+
+    - Room Database
+        library ORM (Object Relational Mapping)
+        Android Jetpack
+        lapisan abstraksi SQLite
+        menggunakan mekanisme DAO (Data Access Object) [SQL object -> Kotlin/Java object]
+        terintegrasi dengan LiveData
+        persistent
+        hilang saat aplikasi di-uninstall
+
+    - App-Specific Storage
+        mekanisme pembuatan berkas yang umum
+        setiap berkas yang tercipta akan secara otomatis tersimpan di secondary memory dan hanya bisa diakses oleh aplikasi yang membuatnya
+        persistent
+        hilang saat aplikasi di-uninstall
+
+    - Shared Storage
+        persistent
+        tidak hilang saat aplikasi di-uninstall
+
+    - Network
+
+
+
+# perbandingan
+    ┏━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃ JENIS PENYIMPANAN    ┃ TIPE DATA PENYIMPANAN                      ┃ LAMA PENYIMPANAN                           ┃
+    ┡━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+    │ onSavedInstanceState │ key-value                                  │ hanya ketika aplikasi dibuka               │
+    ├──────────────────────┼────────────────────────────────────────────┼────────────────────────────────────────────┤
+    │ DataStore            │ key-value                                  │ sampai aplikasi di-uninstall/clear data    │
+    ├──────────────────────┼────────────────────────────────────────────┼────────────────────────────────────────────┤
+    │ SQLite database      │ tabel data lokal                           │ sampai aplikasi di-uninstall/clear data    │
+    ├──────────────────────┼────────────────────────────────────────────┼────────────────────────────────────────────┤
+    │ Room database        │ tabel data lokal (ORM)                     │ sampai aplikasi di-uninstall/clear data    │
+    ├──────────────────────┼────────────────────────────────────────────┼────────────────────────────────────────────┤
+    │ App-specific storage │ penyimpanan media privat                   │ sampai aplikasi di-uninstall/clear data    │
+    ├──────────────────────┼────────────────────────────────────────────┼────────────────────────────────────────────┤
+    │ Shared storage       │ penyimpanan media publik                   │ tetap ada walau di-uninstall/clear data    │
+    ├──────────────────────┼────────────────────────────────────────────┼────────────────────────────────────────────┤
+    │ Network/server       │ tabel data yang bisa diakses banyak device │ selama server aktif                        │
+    └──────────────────────┴────────────────────────────────────────────┴────────────────────────────────────────────┘
+
+
+
+# links
+    [https://developer.android.com/guide/topics/data/data-storage.html]
+
+    [https://developer.android.com/training/basics/data-storage/files.html]
+    [https://www.youtube.com/watch?v=8Qs8jCOgEyI]
