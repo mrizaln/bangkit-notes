@@ -1,0 +1,104 @@
+# what
+    notification
+
+
+# design considerations
+    read: [https://material.io/design/platform-guidance/android-notifications.html]
+
+
+# membuat notification
+    membuat     NotificationCompat.Builder
+    notify      NotificationManager.notify()
+
+
+# required notification content
+    - small icon            setSmallIcon()
+    - title                 setContentTitle()
+    - detail text           setContentText()
+
+
+# notification actions (optional)
+    action defined as PendingIntent dan dimasukkan ke dalam NotificationCompat.Builder
+        PendingIntent: sebuah token yang diberikan untuk aplikasi lainnya (termasuk aplikasi itu sendiri)
+
+    contoh
+    ```kotlin
+        var notificationIntent = Intent(this, MainActivity::class.java)
+        var notificationPendingIntent = PendingIntent.getActivity(this, NOTIFICATION_ID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        var mBuilder = NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.notification_icon)
+                .setContentTitle("Hey, check this app now!")
+                .setContentText("Something important you need to know.")
+                .setContentIntent(notificationPendingIntent)
+    ```
+
+
+# notification priority
+    NotificationCompat.Builder.setPriority()
+
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃ LEVEL                                      ┃ IMPORTANCE (since Android 8.0) ┃ PRIORITY (until Android 7.1) ┃
+    ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+    │ Urgent                                     │ IMPORTANCE_HIGH                │ PRIORITY_HIGH (1) or         │
+    │ (muncul suara & tampil sekilas)            │                                │ PRIORITY_MAX (2)             │
+    ├────────────────────────────────────────────┼────────────────────────────────┼──────────────────────────────┤
+    │ High                                       │ IMPORTANCE_DEFAULT             │ PRIORITY_DEFAULT (0)         │
+    │ (muncul suara)                             │                                │                              │
+    ├────────────────────────────────────────────┼────────────────────────────────┼──────────────────────────────┤
+    │ Medium                                     │ IMPORTANCE_LOW                 │ PRIORITY_LOW (-1)            │
+    │ (tanpa suara)                              │                                │                              │
+    ├────────────────────────────────────────────┼────────────────────────────────┼──────────────────────────────┤
+    │ Low                                        │ IMPORTANCE_MIN                 │ PRIORITY_MIN (-2)            │
+    │ (tanpa suara & tidak muncul di status bar) │                                │                              │
+    └────────────────────────────────────────────┴────────────────────────────────┴──────────────────────────────┘
+
+
+# peeking
+    notification dengan PRIORITY_MAX atau PRIORITY_HIGH bisa menggunakan fitur peeking
+    notification akan muncul sebentar di layar kita seperti mengintip
+
+
+# expanded view layouts
+    since Android 4.1
+
+    - BigTextStyle      teks banyak
+    - InboxStyle        list berupa text
+    - MediaStyle        notifikasi khusus menangani Media Player
+    - BigPictureStyle   notifikasi yang menampilkan gambar
+
+    contoh BigPictureStyle
+    ```kotlin
+        val androidImage = BitmapFactory.decodeResource(resources, R.drawable.mascot_1)
+
+        val notif = NotificationCompat.Builder(this)
+                .setContentTitle("New photo from " + sender.toString())
+                .setContentText(subject)
+                .setSmallIcon(R.drawable.new_post)
+                .setLargeIcon(androidImage)
+                .setStyle(NotificationCompat.BigPictureStyle()
+                        .bigPicture(androidImage)
+                        .setBigContentTitle("Large Notification Title"))
+                .build()
+    ```
+
+
+# notification pada Android O ke atas
+    since Android O (Android 8.0) harus membuat channel agar notification bisa berjalan
+
+    channel berfungsi untuk mengelompokkan notification dalam beberapa grup
+
+    kelebihannya kota mengatur notification yang dalam satu channel tersebut dalam sekali waktu
+        e.g. mengatur priority, sound, vibration
+
+    contoh
+    ```kotlin
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(CHANNEL_ID, CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT)
+            mBuilder.setChannelId(CHANNEL_ID)
+            mNotificationManager.createNotificationChannel(channel)
+        }
+    ```
+
+
+# links
+    [https://developer.android.com/guide/topics/ui/notifiers/notifications?hl=en]

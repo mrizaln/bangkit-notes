@@ -1,0 +1,125 @@
+# what
+    WorkManager precursor: JobScheduler (since API Level 21), FirebaseJobDispatcher (until API Level 20) [deprecated]
+
+    termasuk paket Jetpack
+    menjanjikan proses background yang dapat dieksekusi (deferrable) walaupun aplikasi ditutup atau bahkan device di-restart
+    ramah baterai
+
+
+# kelebihan
+    - mendukung one-time task maupun periodic task
+    - bisa membuat chain antar task
+    - mendukung sampai API level 14
+    - tetap dapat berjalan walupun tanpa Google Play Service
+    - berjalan dengan mulus dengan doze mode
+    - mendukung LiveData untuk melihat status Work
+
+
+# kapan menggunakan WorkManager
+    cocok digunakan untuk aksi-aksi yang bersifat deferrable
+
+    - mengirim log ke server
+    - mengirim media ke server
+    - sync database secara periodic dari server
+    - menerapkan filter ke image
+
+    decision flow of whether to use WorkManager or not:
+
+    "I NEED TO RUN A TASK IN BACKGROUND, HOW SHOULD I DO IT?"         yes
+        [ Local deferrable work & sync ]                            ──────▶     [ WorkManager ]
+            │
+            │ no
+            ▼                                                         yes
+        [ is online triggered? ]                                    ──────▶     [ Firebase cloud messaging and WorkManager ]
+            │
+            │ no
+            ▼                                                         yes
+        [ user expects to run immediately without interruption?]    ──────▶     [ Foreground service ]
+            │
+            │ no
+            ▼                                                         yes
+        [ need to execute at an exact time? ]                       ──────▶     [ AlarmManager ]
+            │
+            │ no
+            ▼
+        { don't do as background work }
+
+
+# komponen WorkManager
+    - Worker        kelas dengan method doWork() -- di sinilah aksi yang akan dieksekusi
+    - WorkRequest   dua jenis: OneTimeWorkRequest dan periodicWorkRequest
+    - Constraint    mengatur kapan proses tersebut dieksekusi
+    - Data          digunakan untuk mengirim data ke Worker dengan format key-value
+    - WorkManager   kelas yang menjalankan WorkRequest dan juga bisa digunakan untuk mengatur task-chaining
+    - Result        digunakan untuk melihat status worker (menunggu/gagal/berhasil)
+
+    contoh kelas yang mengimplementasikan Worker
+    ```kotlin
+        class MyWorker(context: Context, params: WorkerParameters) : Worker(context, params) {
+            override fun doWork(): Result {
+                try {
+                    // proses di background
+                    return Result.success()
+                } catch (e: Exception) {
+                    return Result.failure()
+                }
+
+            }
+
+        }
+    ```
+
+    memanggil kelas Worker
+    ```kotlin
+        val myData = Data.Builder()
+        myData.putLong(LETTER_ID, letterId)
+        myData.build()
+
+        val myConstraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .build()
+
+        val myRequest = OneTimeWorkRequestBuilder<NotificationWorker>()
+            .setInputData(myData)
+            .setConstraints(myConstraints)
+            .addTag(NOTIFICATION_CHANNEL_ID)
+            .build()
+
+        WorkManager.getInstance().enqueue(myRequest)
+    ```
+
+    task chaining
+    ```kotlin
+        WorkManager.getInstance().beginWith(myRequest).then(uploadRequest).enqueue()
+    ```
+
+
+# alur kerja WorkManager
+
+          ┌──────┐
+          │ Data │
+    ┌─────┴──────┴┐                       Processor
+    │ WorkRequest │◀────────┐           ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    └─────────────┘         │           ┃ ┌─────────────────────────┐ ┃
+           │           ┌────────┐       ┃ │      JobScheduler       │ ┃
+           │           │ Worker │       ┃ └─────────────────────────┘ ┃
+           │           └────────┘       ┃ ┌─────────────────────────┐ ┃             ┌──────┐
+           ▼                            ┃ │      JobDispatcher      │ ┃             │ Data │
+    ┌─────────────┐      enqueue()      ┃ └─────────────────────────┘ ┃  publish   ┌┴──────┴────┐
+    │ WorkManager │────────────────────▶┃ ┌─────────────────────────┐ ┃───────────▶│ WorkResult │
+    └─────────────┘                     ┃ │        Executor         │ ┃            └────────────┘
+           │                            ┃ └─────────────────────────┘ ┃
+           │                            ┃ ┌─────────────────────────┐ ┃
+           │ saveWork                   ┃ │      AlarmManager       │ ┃
+           │                            ┃ └─────────────────────────┘ ┃
+           ▼                            ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+    ┌──────────────┐          updateWorkState          │
+    │ WorkDatabase │◀──────────────────────────────────┘
+    └──────────────┘
+
+
+# links
+    [https://medium.com/androiddevelopers/introducing-workmanager-2083bcfc4712]
+    [https://codelabs.developers.google.com/codelabs/android-workmanager-kt/index.html#0]
+    [https://developer.android.com/topic/libraries/architecture/workmanager]
+    [https://developer.android.com/guide/background/]

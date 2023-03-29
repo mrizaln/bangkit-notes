@@ -1,0 +1,60 @@
+# intro
+    pola umum aplikasi Android bersifat list to detail
+
+    saat aplikasi ditekang, sistem Android akan memeriksa apakah aplikasi tersebut memiliki task atau tidak
+    bila aplikasi tersebut tidak memiliki task, maka aplikasi akan membuat sebuah task baru
+    aplikasi akan mencari Activity yang memiliki IntentFilter dengan action sebagai launcher yang memiliki kategori main di AndroidManifest.xml
+
+    back stack      stack of Activities opened when navigating an app. top of the stack will be destroyed on back button action
+    task            kumpulan/urutan? Activity yang diinteraksi oleh user untuk melakukan sebuah pekerjaan
+
+    read: [https://developer.android.com/guide/components/tasks-and-back-stack.html]
+
+
+# launch mode dan flag
+    mengubah perilaku penambahan Activity ke back stack
+
+        launchMode="<mode>"     di AndroidManifest.xml
+        Intent.<flag>           di Intent
+
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃ MODE                         ┃ PROSES YANG TERJADI                                                         ┃
+    ┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+    │ Standard (default)           │ Setiap kali Intent baru terbuat. Bisa lebih dari satu di dalam sebuah task. │
+    ├──────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
+    │ singleTop |                  │ Gunakan lagi instance jika sudah ada di paling atas task dan memanggil      │
+    │ FLAG_ACTIVITY_SINGLE_TOP     │ onNewIntent(). Jika tidak paling atas, instance akan dibuat lagi.           │
+    ├──────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
+    │ singleTask |                 │ Gunakan lagi instance jika sudah ada di dalam task yang sama di mana pun    │
+    │ FLAG_ACTIVITY_NEW_TASK       │ posisinya, kemudian memanggil onNewIntent().                                │
+    ├──────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
+    │ singleInstance               │ Hanya ada satu instance di dalam suatu task.                                │
+    └──────────────────────────────┴─────────────────────────────────────────────────────────────────────────────┘
+
+    read: [https://evanfang.medium.com/real-understand-tasks-and-back-stack-7ddf9a05b24b]
+
+
+# TaskStackBuilder
+    jika anda membuat notifikasi yang ketika diklik menuju suatu activity yang cukup dalam
+        -> bisa membuat back stack yang kemudian dikirimkan melalui intent
+
+    syarat: perlu menambahkan hierarki dari Activity anda pada AndroidManifest.xml
+                caranya dengan menambahkan `android:parentActivityName` pada setiap Activity yang dituju dari notifikasi
+
+    misal heirarki:     MainActivity -> DetailActivity
+
+    contoh pendingintent ke DetailActivity
+    ```kotlin
+        val pendingIntent = TaskStackBuilder.create(this)
+           .addParentStack(DetailActivity::class.java)
+           .addNextIntent(notifDetailIntent)
+           .getPendingIntent(110, PendingIntent.FLAG_UPDATE_CURRENT)
+    ```
+
+    read: [https://developer.android.com/training/notify-user/navigation.html?utm_campaign=android_series_tasks_back_stack_051216&utm_source=medium&utm_medium=blog#DirectEntry]
+
+
+# up and back button
+    sama mun di aplikasi
+
+    back button bisa kaluar aplikasi

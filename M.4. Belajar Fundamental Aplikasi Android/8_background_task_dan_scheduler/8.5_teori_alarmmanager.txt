@@ -1,0 +1,54 @@
+# what
+    mekanisme untuk mengulang sebuah proses di waktu tertentu
+    AlarmManager memberikan kemudahan bagi aplikasi untuk melakukan operasi berbasis waktu di luar daur hidup aplikasi itu sendiri
+
+
+# karakteristik
+    - dapat menjalankan object Intent berdasarkan waktu dan interval yang ditentukan
+    - bisa bekerja dengan baik bersama broadcast receiver untuk menjalankan komponen lain seperti service untuk melakukan operasi tertentu
+    - alarm berjalan di luar daur hidup aplikasi induknya
+    - esensi utama dari AlarmManager adalah untuk meminimalkan penggunaan resource dan menghindari penggunaan timer dan background service yang berkepanjangan untuk melakukan operasi atau aksi yang dibutuhkan
+
+
+# metode membaut AlarmManager
+    - set                   tugas yang dijalankan sekali saja
+    - setRepeating
+    - setInexactRepeating   tugas yang dijalankan secara berulang di waktu yang tidak selalu tetap
+
+
+# tipe alarm
+    ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┓
+    ┃ ///////////// ┃ ELAPSED REAL TIME (ERT) ┃ REAL TIME CLOCK (RTC) ┃
+    ┣━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━┩
+    ┃ TANPA WAKE UP ┃ ELAPSED_REALTIME        │ RTC                   │
+    ┣━━━━━━━━━━━━━━━┫─────────────────────────┼───────────────────────┤
+    ┃ WAKE UP       ┃ ELAPSED_REALTIME_WAKEUP │ RTC_WAKEUP            │
+    ┗━━━━━━━━━━━━━━━┹─────────────────────────┴───────────────────────┘
+
+    > ERT       waktu yang telah berlalu sejak sistem Android mulai dijalankan
+                tidak tergantung time zone
+                tetap berjalan meskipun perangkat dimatikan dan dihidupkan kembali
+                cocok untuk alarm berjenis interval
+
+    > RTC       waktu yang ditentukan oleh jam fisik pada perangkat
+                berhenti bekerja jika perangkat dimatikan dan dihidupkan kembali
+                cocok untuk tugas yang harus dijalankan pada waktu yang tepat sesuai dengan jam fisik pada perangkat
+
+
+    > wakeup behavior   membuat CPU perangkat menyala walaupun layar dalam keadaan mati
+                        cocok untuk tugas yang memang penting dan harus dilakukan saat itu juga
+
+
+# best practice
+    - lakukan untuk proses di lokal
+    - jaga frekuensi alarm yang digunakan dengan interval yang tidak pendek
+    - jika tidak terlalu penting, hindari penggunaan wakeup
+    - jika AlarmManager yang digunakan untuk scheduling task yang terhubung ke jaringan dan melakukan request ke server, maka hindari penggunaan setRepeating() dan gunakan setInexactRepeating() dengan penggunaan tipe alarm ELAPSED_REALTIME
+
+    note: Android API Level 19 ke atas, semua pemanggilan repeating alarm adalah menggunakan inexact repeating
+          [https://developer.android.com/reference/android/app/AlarmManager.html#setInexactRepeating(int,%20long,%20long,%20android.app.PendingIntent)]
+
+
+# links
+    [https://developer.android.com/reference/android/app/AlarmManager.html]
+    [https://developer.android.com/training/scheduling/alarms.html#/h]
