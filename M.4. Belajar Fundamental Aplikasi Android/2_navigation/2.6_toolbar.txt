@@ -1,2 +1,0 @@
-https://developer.android.com/reference/android/widget/Toolbar.html
-https://guides.codepath.com/android/Using-the-App-ToolBar
