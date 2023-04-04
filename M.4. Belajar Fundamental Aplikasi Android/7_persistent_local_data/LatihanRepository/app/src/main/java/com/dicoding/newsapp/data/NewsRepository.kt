@@ -8,12 +8,8 @@ import androidx.lifecycle.map
 import com.dicoding.newsapp.BuildConfig
 import com.dicoding.newsapp.data.source.local.entity.NewsEntity
 import com.dicoding.newsapp.data.source.local.room.NewsDao
-import com.dicoding.newsapp.data.source.remote.response.NewsResponse
 import com.dicoding.newsapp.data.source.remote.retrofit.ApiService
 import com.dicoding.newsapp.utils.AppExecutors
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class NewsRepository private constructor(
     private val apiService: ApiService,

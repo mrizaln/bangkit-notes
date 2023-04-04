@@ -11,8 +11,8 @@
         <option name="gradleJvm" value="17 (3)" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.4. Belajar Fundamental Aplikasi Android/7_persistent_local_data/LatihanRepository (starter)" />
-            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.4. Belajar Fundamental Aplikasi Android/7_persistent_local_data/LatihanRepository (starter)/app" />
+            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.4. Belajar Fundamental Aplikasi Android/7_persistent_local_data/LatihanRepository" />
+            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.4. Belajar Fundamental Aplikasi Android/7_persistent_local_data/LatihanRepository/app" />
           </set>
         </option>
       </GradleProjectSettings>
