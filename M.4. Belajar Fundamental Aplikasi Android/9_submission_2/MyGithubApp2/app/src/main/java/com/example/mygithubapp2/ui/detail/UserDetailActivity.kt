@@ -1,6 +1,7 @@
 package com.example.mygithubapp2.ui.detail
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -61,9 +62,10 @@ class UserDetailActivity : AppCompatActivity() {
                 }
                 is RequestResult.Error -> {
                     binding.progressBarProfileDetail.visibility = View.GONE
-                    Toast.makeText(
-                        this, "Failed to load data: ${result.error}", Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        this, "Failed to load data: ${result.error}", Toast.LENGTH_LONG
+//                    ).show()
+                    showToast(this, "Failed to load data: ${result.error}")
                 }
             }
         }
@@ -92,6 +94,7 @@ class UserDetailActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // don't handle menu when userDetail still null
         if (userDetail == null)
             return super.onOptionsItemSelected(item)
 
@@ -100,11 +103,13 @@ class UserDetailActivity : AppCompatActivity() {
                 item.icon = resources.getDrawable(
                     if (isFavorite) {
                         userDetailViewModel.removeFavoriteUserByUsername(userDetail!!.username)
+                        showToast(this@UserDetailActivity, "${userDetail!!.username} removed from favorite")
                         R.drawable.ic_favorite_border_24dp
                     } else {
                         userDetailViewModel.addUserToFavorite(
                             UserEntity(userDetail!!.username, userDetail!!.avatarUrl)
                         )
+                        showToast(this@UserDetailActivity, "${userDetail!!.username} added to favorite")
                         R.drawable.ic_favorite_24dp
                     }
                 )
@@ -115,11 +120,12 @@ class UserDetailActivity : AppCompatActivity() {
                     putExtra(Intent.EXTRA_TEXT, "https://github.com/${userDetail!!.username}")
                 }
                 startActivity(Intent.createChooser(shareIntent, "Share user"))
-                Toast.makeText(
-                    this@UserDetailActivity,
-                    "Sharing ${userDetail!!.fullName}",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    this@UserDetailActivity,
+//                    "Sharing ${userDetail!!.fullName}",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+                showToast(this@UserDetailActivity, "Sharing ${userDetail!!.fullName}")
             }
         }
         return super.onOptionsItemSelected(item)
@@ -166,5 +172,9 @@ class UserDetailActivity : AppCompatActivity() {
         }.attach()
 
         supportActionBar?.elevation = 0f
+    }
+
+    private fun showToast(context: Context, message: String) {
+        Toast.makeText( context, message, Toast.LENGTH_SHORT).show()
     }
 }

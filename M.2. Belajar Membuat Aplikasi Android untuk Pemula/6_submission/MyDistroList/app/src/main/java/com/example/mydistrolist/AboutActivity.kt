@@ -49,11 +49,12 @@ class AboutActivity : AppCompatActivity() {
             }
         }
 
-        listOf(
+        val something = listOf(
             Triple(binding.tvEmail, logo_gmail, Uri.parse("mailto:${binding.tvEmail.text}")),
             Triple(binding.tvGithub, logo_github, Uri.parse("https://github.com/${binding.tvGithub.text}")),
             Triple(binding.tvLinkedin, logo_linkedin, Uri.parse("https://linkedin.com/in/${binding.tvLinkedin.text}"))
-        ).map { (view, imgUrl, intentUri) ->
+        )
+        something.map { (view, imgUrl, intentUri) ->
             insertPictureIntoTextView(view, imgUrl)
             view.setOnClickListener { startActivity(Intent(Intent.ACTION_VIEW, intentUri)) }
         }

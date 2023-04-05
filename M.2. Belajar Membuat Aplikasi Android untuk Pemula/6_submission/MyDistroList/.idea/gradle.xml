@@ -9,8 +9,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.2. Belajar Membuat Aplikasi Android untuk Pemula/6_submission/MyDistroList" />
+            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.2. Belajar Membuat Aplikasi Android untuk Pemula/6_submission/MyDistroList/app" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -5,12 +5,14 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$USER_HOME$/.sdkman/candidates/gradle/current" />
+        <option name="gradleJvm" value="17 (3)" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.4. Belajar Fundamental Aplikasi Android/5_submission_1/MyGithubApp" />
-            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/M.4. Belajar Fundamental Aplikasi Android/5_submission_1/MyGithubApp/app" />
+            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/AndroidStudioProjects/MyNotesApp2" />
+            <option value="$USER_HOME$/Documents/Perkuliahan/Non-Kelas/Bangkit/main/by-course/git-repo/AndroidStudioProjects/MyNotesApp2/app" />
           </set>
         </option>
       </GradleProjectSettings>
