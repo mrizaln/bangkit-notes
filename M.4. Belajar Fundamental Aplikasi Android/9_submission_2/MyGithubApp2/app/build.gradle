@@ -17,8 +17,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-//        buildConfigField("String", "API_KEY", '"YOUR_GIT_TOKEN"')
-        buildConfigField("String", "API_KEY", '"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"')
+        buildConfigField("String", "API_KEY", '"YOUR_GIT_TOKEN"')
     }
 
     buildTypes {
