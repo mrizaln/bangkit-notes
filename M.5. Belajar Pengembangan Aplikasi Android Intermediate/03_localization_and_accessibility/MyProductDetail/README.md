@@ -1,3 +1,4 @@
+```text
 MyProductDetail
 └── app
     └── src
@@ -13,3 +14,4 @@ MyProductDetail
                                 └── RemoteDataSource.kt
 
 9 directories, 4 files
+```

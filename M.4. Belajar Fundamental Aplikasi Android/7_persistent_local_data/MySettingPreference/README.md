@@ -1,3 +1,4 @@
+```text
 MySettingPreference
 └── app
     └── src
@@ -10,3 +11,4 @@ MySettingPreference
                             └── MyPreferenceFragment.kt
 
 8 directories, 2 files
+```

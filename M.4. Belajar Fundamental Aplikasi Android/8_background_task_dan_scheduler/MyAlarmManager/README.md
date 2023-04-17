@@ -1,3 +1,4 @@
+```text
 MyAlarmManager
 └── app
     └── src
@@ -12,3 +13,4 @@ MyAlarmManager
                             └── TimePickerFragment.kt
 
 8 directories, 4 files
+```

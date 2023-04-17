@@ -1,3 +1,4 @@
+```text
 MyNewsApp
 └── app
     └── src
@@ -36,3 +37,4 @@ MyNewsApp
                                 └── DateFormatter.kt
 
 19 directories, 17 files
+```

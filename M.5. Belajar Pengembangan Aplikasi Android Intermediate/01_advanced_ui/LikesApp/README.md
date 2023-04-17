@@ -1,3 +1,4 @@
+```text
 LikesApp
 └── app
     └── src
@@ -9,3 +10,4 @@ LikesApp
                             └── MainActivity.kt
 
 8 directories, 1 file
+```

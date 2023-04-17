@@ -1,3 +1,4 @@
+```text
 TicketingApp
 └── app
     └── src
@@ -11,3 +12,4 @@ TicketingApp
                             └── SeatsView.kt
 
 8 directories, 3 files
+```

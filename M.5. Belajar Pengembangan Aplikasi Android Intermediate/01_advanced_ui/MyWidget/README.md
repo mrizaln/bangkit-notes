@@ -1,3 +1,4 @@
+```text
 MyWidget
 └── app
     └── src
@@ -11,3 +12,4 @@ MyWidget
                             └── RandomNumberWidget.kt
 
 8 directories, 3 files
+```

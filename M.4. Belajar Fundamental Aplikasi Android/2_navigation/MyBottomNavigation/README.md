@@ -1,3 +1,4 @@
+```text
 MyBottomNavigation
 └── app
     └── src
@@ -20,3 +21,4 @@ MyBottomNavigation
                                     └── NotificationsViewModel.kt
 
 12 directories, 8 files
+```

@@ -1,3 +1,4 @@
+```text
 MySharedPreferences
 └── app
     └── src
@@ -12,3 +13,4 @@ MySharedPreferences
                             └── UserPreference.kt
 
 8 directories, 4 files
+```

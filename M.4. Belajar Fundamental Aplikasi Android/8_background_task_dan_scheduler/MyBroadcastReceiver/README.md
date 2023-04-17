@@ -1,3 +1,4 @@
+```text
 MyBroadcastReceiver
 └── app
     └── src
@@ -12,3 +13,4 @@ MyBroadcastReceiver
                             └── SmsReceiver.kt
 
 8 directories, 4 files
+```

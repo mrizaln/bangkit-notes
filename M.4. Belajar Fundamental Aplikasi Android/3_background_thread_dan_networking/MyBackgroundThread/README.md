@@ -1,3 +1,4 @@
+```text
 MyBackgroundThread
 └── app
     └── src
@@ -9,3 +10,4 @@ MyBackgroundThread
                             └── MainActivity.kt
 
 8 directories, 1 file
+```

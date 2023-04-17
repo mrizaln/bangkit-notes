@@ -1,3 +1,4 @@
+```text
 OnBoardingPage
 └── app
     └── src
@@ -9,3 +10,4 @@ OnBoardingPage
                             └── MainActivity.kt
 
 8 directories, 1 file
+```

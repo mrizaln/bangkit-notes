@@ -1,3 +1,4 @@
+```text
 MyNotesApp
 └── app
     └── src
@@ -20,3 +21,4 @@ MyNotesApp
                             └── NoteAddUpdateActivity.kt
 
 12 directories, 8 files
+```

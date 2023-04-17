@@ -1,3 +1,4 @@
+```text
 MyCamera
 └── app
     └── src
@@ -13,3 +14,4 @@ MyCamera
                                 └── Utils.kt
 
 9 directories, 4 files
+```

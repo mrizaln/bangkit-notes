@@ -1,3 +1,4 @@
+```text
 MyNavigation
 └── app
     └── src
@@ -13,3 +14,4 @@ MyNavigation
                             └── ProfileActivity.kt
 
 8 directories, 5 files
+```

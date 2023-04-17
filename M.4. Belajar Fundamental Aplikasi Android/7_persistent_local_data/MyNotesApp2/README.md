@@ -1,3 +1,4 @@
+```text
 MyNotesApp2
 └── app
     └── src
@@ -26,3 +27,4 @@ MyNotesApp2
                                     └── NoteAdapter.kt
 
 14 directories, 12 files
+```

@@ -1,3 +1,4 @@
+```text
 MyTabLayout
 └── app
     └── src
@@ -12,3 +13,4 @@ MyTabLayout
                             └── SectionsPagerAdapter.kt
 
 8 directories, 4 files
+```

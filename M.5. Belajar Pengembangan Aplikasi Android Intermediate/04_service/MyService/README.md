@@ -1,3 +1,4 @@
+```text
 MyService
 └── app
     └── src
@@ -12,3 +13,4 @@ MyService
                             └── MyForegroundService.kt
 
 8 directories, 4 files
+```

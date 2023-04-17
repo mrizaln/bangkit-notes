@@ -1,3 +1,4 @@
+```text
 MyQuote
 └── app
     └── src
@@ -11,3 +12,4 @@ MyQuote
                             └── QuoteAdapter.kt
 
 8 directories, 3 files
+```

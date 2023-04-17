@@ -1,3 +1,4 @@
+```text
 RestaurantReview
 └── app
     └── src
@@ -15,3 +16,4 @@ RestaurantReview
                             └── ReviewAdapter.kt
 
 8 directories, 7 files
+```

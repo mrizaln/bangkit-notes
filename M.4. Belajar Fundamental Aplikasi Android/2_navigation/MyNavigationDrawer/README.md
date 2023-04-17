@@ -1,3 +1,4 @@
+```text
 MyNavigationDrawer
 └── app
     └── src
@@ -21,3 +22,4 @@ MyNavigationDrawer
                                     └── SlideshowViewModel.kt
 
 12 directories, 9 files
+```

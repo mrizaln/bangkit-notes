@@ -1,3 +1,4 @@
+```text
 MyCustomView
 └── app
     └── src
@@ -11,3 +12,4 @@ MyCustomView
                             └── MyEditText.kt
 
 8 directories, 3 files
+```

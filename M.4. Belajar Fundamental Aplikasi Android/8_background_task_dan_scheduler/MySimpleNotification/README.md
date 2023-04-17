@@ -1,3 +1,4 @@
+```text
 MySimpleNotification
 └── app
     └── src
@@ -9,3 +10,4 @@ MySimpleNotification
                             └── MainActivity.kt
 
 8 directories, 1 file
+```

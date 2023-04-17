@@ -1,3 +1,4 @@
+```text
 MyStackWidget
 └── app
     └── src
@@ -12,3 +13,4 @@ MyStackWidget
                             └── StackWidgetService.kt
 
 8 directories, 4 files
+```

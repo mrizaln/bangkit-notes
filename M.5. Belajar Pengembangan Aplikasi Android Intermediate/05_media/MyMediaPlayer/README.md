@@ -1,3 +1,4 @@
+```text
 MyMediaPlayer
 └── app
     └── src
@@ -11,3 +12,4 @@ MyMediaPlayer
                             └── MediaService.kt
 
 8 directories, 3 files
+```

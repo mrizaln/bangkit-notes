@@ -1,3 +1,4 @@
+```text
 LoginWithAnimation
 └── app
     └── src
@@ -25,3 +26,4 @@ LoginWithAnimation
                                         └── WelcomeActivity.kt
 
 15 directories, 10 files
+```

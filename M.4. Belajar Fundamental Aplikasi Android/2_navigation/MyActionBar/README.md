@@ -1,3 +1,4 @@
+```text
 MyActionBar
 └── app
     └── src
@@ -11,3 +12,4 @@ MyActionBar
                             └── MenuFragment.kt
 
 8 directories, 3 files
+```

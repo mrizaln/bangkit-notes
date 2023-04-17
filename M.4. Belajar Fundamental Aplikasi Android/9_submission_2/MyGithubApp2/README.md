@@ -1,3 +1,4 @@
+```text
 MyGithubApp2
 └── app
     └── src
@@ -47,3 +48,4 @@ MyGithubApp2
                                 └── ViewModelFactory.kt
 
 22 directories, 25 files
+```

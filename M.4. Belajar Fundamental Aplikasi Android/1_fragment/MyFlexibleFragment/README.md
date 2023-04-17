@@ -1,3 +1,4 @@
+```text
 MyFlexibleFragment
 └── app
     └── src
@@ -14,3 +15,4 @@ MyFlexibleFragment
                             └── ProfileActivity.kt
 
 8 directories, 6 files
+```
