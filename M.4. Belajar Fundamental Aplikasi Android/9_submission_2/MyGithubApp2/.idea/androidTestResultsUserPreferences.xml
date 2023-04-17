@@ -8,8 +8,10 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="192.168.100.4:5555" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="R9RN702SZRY" value="120" />
+                  <entry key="SWTV&#10; SWTV" value="120" />
                   <entry key="Tests" value="360" />
                   <entry key="samsung&#10; SM-A015F" value="120" />
                 </map>
