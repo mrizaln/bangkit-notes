@@ -10,6 +10,7 @@ MyStoryApp
                             ├── data
                             │   ├── di
                             │   │   ├── Injection.kt
+                            │   │   ├── TokenHolder.kt
                             │   │   └── ViewModelFactory.kt
                             │   ├── model
                             │   │   ├── StoryModel.kt
@@ -34,7 +35,8 @@ MyStoryApp
                             │   │   │   └── LoginViewModel.kt
                             │   │   ├── main
                             │   │   │   ├── MainActivity.kt
-                            │   │   │   └── MainViewModel.kt
+                            │   │   │   ├── MainViewModel.kt
+                            │   │   │   └── StoryListAdapter.kt
                             │   │   ├── register
                             │   │   │   ├── RegisterActivity.kt
                             │   │   │   └── RegisterViewModel.kt
@@ -50,5 +52,5 @@ MyStoryApp
                             └── util
                                 └── ImageFileHelper.kt
 
-24 directories, 26 files
+24 directories, 28 files
 ```
