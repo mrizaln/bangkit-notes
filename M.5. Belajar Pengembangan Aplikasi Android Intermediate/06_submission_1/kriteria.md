@@ -6,30 +6,30 @@ Fitur yang harus ada pada aplikasi.
 
     Syarat yang harus dipenuhi sebagai berikut.
 
-    - Menampilkan halaman **login** untuk masuk ke dalam aplikasi. Berikut input yang dibutuhkan.
+    - [x] Menampilkan halaman **login** untuk masuk ke dalam aplikasi. Berikut input yang dibutuhkan.
 
-      - Email (`R.id.ed_login_email`)
-      - Password (`R.id.ed_login_password`)
+      - [x] Email (`R.id.ed_login_email`)
+      - [x] Password (`R.id.ed_login_password`)
 
-    - Membuat halaman **register** untuk mendaftarkan diri dalam aplikasi. Berikut input yang dibutuhkan.
+    - [x] Membuat halaman **register** untuk mendaftarkan diri dalam aplikasi. Berikut input yang dibutuhkan.
 
-      - Nama (`R.id.ed_register_name`)
-      - Email (`R.id.ed_register_email`)
-      - Password (`R.id.ed_register_password`)
+      - [x] Nama (`R.id.ed_register_name`)
+      - [x] Email (`R.id.ed_register_email`)
+      - [x] Password (`R.id.ed_register_password`)
 
-    - Password wajib disembunyikan.
-    - Membuat **Custom View** berupa EditText **pada halaman login atau register** dengan ketentuan sebagai berikut.
+    - [x] Password wajib disembunyikan.
+    - [x] Membuat **Custom View** berupa EditText **pada halaman login atau register** dengan ketentuan sebagai berikut.
 
-      - Jika jumlah password kurang dari 8 karakter, menampilkan pesan error secara langsung pada EditText tanpa harus pindah form atau klik tombol dulu.
+      - [x] Jika jumlah password kurang dari 8 karakter, menampilkan pesan error secara langsung pada EditText tanpa harus pindah form atau klik tombol dulu.
 
-    - Menyimpan data sesi dan token di **preferences**. Data sesi digunakan untuk mengatur alur aplikasi dengan spesifikasi seperti berikut.
+    - [x] Menyimpan data sesi dan token di **preferences**. Data sesi digunakan untuk mengatur alur aplikasi dengan spesifikasi seperti berikut.
 
-      - Jika sudah login langsung masuk ke halaman utama.
-      - Jika belum maka akan masuk ke halaman login.
+      - [x] Jika sudah login langsung masuk ke halaman utama.
+      - [x] Jika belum maka akan masuk ke halaman login.
 
-    - Terdapat fitur untuk **logout** (`R.id.action_logout`) pada halaman utama dengan ketentuan sebagai berikut.
+    - [x] Terdapat fitur untuk **logout** (`R.id.action_logout`) pada halaman utama dengan ketentuan sebagai berikut.
 
-      - Ketika tombol logout ditekan, informasi token, dan sesi harus dihapus.
+      - [x] Ketika tombol logout ditekan, informasi token, dan sesi harus dihapus.
 
 <br />
 
@@ -37,16 +37,16 @@ Fitur yang harus ada pada aplikasi.
 
     Syarat yang harus dipenuhi sebagai berikut.
 
-    - Menampilkan **daftar cerita** dari API yang disediakan. Berikut minimal informasi yang wajib Anda tampilkan.
+    - [x] Menampilkan **daftar cerita** dari API yang disediakan. Berikut minimal informasi yang wajib Anda tampilkan.
 
-      - Nama user (`R.id.tv_item_name`)
-      - Foto  (`R.id.iv_item_photo`)
+      - [x] Nama user (`R.id.tv_item_name`)
+      - [x] Foto  (`R.id.iv_item_photo`)
 
-    - Muncul **halaman detail** ketika salah satu item cerita ditekan. Berikut  minimal informasi yang wajib Anda tampilkan.
+    - [x] Muncul **halaman detail** ketika salah satu item cerita ditekan. Berikut  minimal informasi yang wajib Anda tampilkan.
 
-      - Nama user (`R.id.tv_detail_name`)
-      - Foto (`R.id.iv_detail_photo`)
-      - Deskripsi (`R.id.tv_detail_description`)
+      - [x] Nama user (`R.id.tv_detail_name`)
+      - [x] Foto (`R.id.iv_detail_photo`)
+      - [x] Deskripsi (`R.id.tv_detail_description`)
 
 <br />
 
@@ -54,16 +54,16 @@ Fitur yang harus ada pada aplikasi.
 
     Syarat yang harus dipenuhi sebagai berikut.
 
-    - Membuat halaman untuk menambah cerita baru yang dapat diakses dari halaman daftar cerita. Berikut input minimal yang dibutuhkan.
+    - [x] Membuat halaman untuk menambah cerita baru yang dapat diakses dari halaman daftar cerita. Berikut input minimal yang dibutuhkan.
 
-      - File foto (wajib bisa dari kamera)
-      - Deskripsi cerita (`R.id.ed_add_description`)
+      - [x] File foto (wajib bisa dari kamera)
+      - [x] Deskripsi cerita (`R.id.ed_add_description`)
 
-    - Berikut adalah ketentuan dalam menambahkan cerita baru:
+    - [x] Berikut adalah ketentuan dalam menambahkan cerita baru:
 
-      - Terdapat tombol (`R.id.button_add`) untuk upload data ke server.
-      - Setelah tombol tersebut diklik dan proses upload berhasil, maka akan kembali ke halaman daftar cerita.
-      - Data cerita terbaru harus muncul di paling atas.
+      - [x] Terdapat tombol (`R.id.button_add`) untuk upload data ke server.
+      - [x] Setelah tombol tersebut diklik dan proses upload berhasil, maka akan kembali ke halaman daftar cerita.
+      - [x] Data cerita terbaru harus muncul di paling atas.
 
 <br />
 
@@ -71,11 +71,11 @@ Fitur yang harus ada pada aplikasi.
 
     Syarat yang harus dipenuhi sebagai berikut.
 
-    - Membuat animasi pada aplikasi dengan menggunakan salah satu jenis animasi berikut.
+    - [x] Membuat animasi pada aplikasi dengan menggunakan salah satu jenis animasi berikut.
 
-      - Property Animation
-      - Motion Animation
-      - Shared Element
+      - [x] Property Animation
+      - [ ] Motion Animation
+      - [ ] Shared Element
 
     - Tuliskan jenis dan lokasi animasi pada Student Note.
 
@@ -89,24 +89,24 @@ Submission Anda akan dinilai oleh reviewer dengan **skala 1-5** berdasarkan dar
 
 Anda dapat menerapkan beberapa **saran** di bawah ini untuk mendapatkan nilai tinggi.
 
-- Menuliskan kode dengan bersih.
-  - Bersihkan comment dan kode yang tidak digunakan.
-  - Indentasi yang sesuai.
-  - Menghapus import yang tidak digunakan.
-- Membuat Custom View berupa EditText dengan ketentuan sebagai berikut.
-  - Jika format email salah, menampilkan error langsung pada EditText.
-- Menambahkan opsi mengambil gambar dari Galeri pada saat menambah cerita.
-- Mengimplemantasikan alur aplikasi yang tepat:
-  - Setelah login, ketika ditekan back pada halaman home, tidak kembali ke halaman login tetapi keluar.
-  - Setelah upload, ketika ditekan back pada halaman home, tidak kembali ke halaman upload tetapi keluar.
-  - Setelah logout, ketika ditekan back, tidak kembali ke dalam aplikasi tetapi keluar.
-- Membuat stack widget untuk menampilkan daftar cerita.
-- Terdapat pengaturan untuk localization (multi bahasa).
-- Menambahkan informasi selama proses interaksi dengan API:
-  - Loading ketika memuat data
-  - Informasi error ketika gagal
-  - Pesan informasi ketika tidak ada data
-- Menerapkan Android Architecture Component (minimal ViewModel dan LiveData) dengan benar di semua halaman yang mengandung business logic.
+- [x] Menuliskan kode dengan bersih.
+  - [x] Bersihkan comment dan kode yang tidak digunakan.
+  - [x] Indentasi yang sesuai.
+  - [x] Menghapus import yang tidak digunakan.
+- [x] Membuat Custom View berupa EditText dengan ketentuan sebagai berikut.
+  - [x] Jika format email salah, menampilkan error langsung pada EditText.
+- [x] Menambahkan opsi mengambil gambar dari Galeri pada saat menambah cerita.
+- [x] Mengimplemantasikan alur aplikasi yang tepat:
+  - [x] Setelah login, ketika ditekan back pada halaman home, tidak kembali ke halaman login tetapi keluar.
+  - [x] Setelah upload, ketika ditekan back pada halaman home, tidak kembali ke halaman upload tetapi keluar.
+  - [x] Setelah logout, ketika ditekan back, tidak kembali ke dalam aplikasi tetapi keluar.
+- [ ] Membuat stack widget untuk menampilkan daftar cerita.
+- [x] Terdapat pengaturan untuk localization (multi bahasa).
+- [x] Menambahkan informasi selama proses interaksi dengan API:
+  - [x] Loading ketika memuat data
+  - [x] Informasi error ketika gagal
+  - [x] Pesan informasi ketika tidak ada data
+- [x] Menerapkan Android Architecture Component (minimal ViewModel dan LiveData) dengan benar di semua halaman yang mengandung business logic.
 
 Detail penilaian submission.
 
