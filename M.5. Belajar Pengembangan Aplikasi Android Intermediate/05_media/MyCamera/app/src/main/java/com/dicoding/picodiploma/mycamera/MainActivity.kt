@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
             type = "image/*"
         }
         val chooser = Intent.createChooser(intent, "Choose a Picture")
-        launcherIntentGallery.launch(intent)
+        launcherIntentGallery.launch(chooser)
     }
 
     private fun startTakePhoto() {
@@ -167,7 +167,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)
             launcherIntentCamera.launch(intent)
         }
-        launcherIntentCamera.launch(intent)
     }
 
     private fun startCameraX() {
