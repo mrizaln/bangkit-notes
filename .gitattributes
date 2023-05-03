@@ -1,4 +1,4 @@
-*.md linguist-detectable=false
+*.md linguist-detectable=true
 *.html linguist-detectable=false
 *.css linguist-detectable=false
 *.bat linguist-detectable=false
