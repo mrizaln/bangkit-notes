@@ -1,0 +1,103 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+android {
+    namespace 'com.example.mystoryapp2'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.mystoryapp2"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders["GOOGLE_MAPS_API_KEY"] = "YOUR_API_KEY"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation "androidx.activity:activity-ktx:1.7.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1" //viewModelScope
+
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+    // testing
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation "androidx.arch.core:core-testing:2.2.0" // InstantTaskExecutorRule
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4" //TestDispatcher
+    testImplementation 'org.mockito:mockito-core:5.3.1'
+    testImplementation 'org.mockito:mockito-inline:5.2.0'
+
+    //special instrumentation testing
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.5.1' // idling resource 3.4.0
+    androidTestImplementation "androidx.arch.core:core-testing:2.2.0" // InstantTaskExecutorRule 2.1.0
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2' //RecyclerViewActions
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.5.1' // Intent 3.4.0
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4" //TestCoroutineDispatcher 1.6.1
+
+    // coroutine support
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1" //viewModelScope
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1" //liveData
+
+    // room
+    implementation "androidx.room:room-ktx:2.5.1"
+    kapt 'androidx.room:room-compiler:2.6.0-alpha01'
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11'
+
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    // swipe refresh layout
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    // desugaring
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.3"
+
+    // paging3
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+    implementation 'androidx.room:room-paging:2.6.0-alpha01'
+
+    // location tracking
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_refresh_maps"
+        android:title="@string/action_refresh_maps_title"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/action_random_marker"
+        android:title="@string/action_random_marker_title"
+        app:showAsAction="collapseActionView" />
+</menu>
