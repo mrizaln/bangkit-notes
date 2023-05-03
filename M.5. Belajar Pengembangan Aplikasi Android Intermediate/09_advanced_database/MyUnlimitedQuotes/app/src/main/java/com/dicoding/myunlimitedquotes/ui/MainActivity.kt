@@ -11,6 +11,7 @@ import com.dicoding.myunlimitedquotes.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: QuoteListAdapter
     private val mainViewModel: MainViewModel by viewModels {
         ViewModelFactory(this)
     }
@@ -21,12 +22,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.rvQuote.layoutManager = LinearLayoutManager(this)
+        binding.refresh.setOnClickListener {
+            adapter.refresh()
+        }
 
         getData()
     }
 
     private fun getData() {
-        val adapter = QuoteListAdapter()
+        adapter = QuoteListAdapter()
         binding.rvQuote.adapter = adapter.withLoadStateFooter(
             footer = LoadingStateAdapter(adapter::retry)
         )

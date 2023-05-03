@@ -41,7 +41,3 @@ MyNewsApp2
 
 21 directories, 18 files
 ```
-
-For some unknown reason, I can't advance through fragment test. The IDE keeps complaining that "Syntax highlighting has been temporarily turned off in file xxxx.kt because of an internal error". Without said function, I virtually can not do anything.
-
-That said, the next part of the test also can't be finished.
