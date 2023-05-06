@@ -103,7 +103,7 @@ class MainActivityTest {
         // if session token not exist
         try {
             onView(withId(R.id.ed_login_email)).perform(clearText(), typeText(existedEmail))
-            onView(withId(R.id.ed_login_password)).perform(clearText(), typeText(existedPassword))
+            onView(withId(R.id.ed_login_password)).perform(clearText(), typeText(existedPassword), closeSoftKeyboard())
             onView(withId(R.id.btn_login)).perform(click())
         } catch (e: NoMatchingViewException) {
             // already login

@@ -7,20 +7,19 @@ MyStoryApp2
                 └── com
                     └── example
                         └── mystoryapp2
-                            ├── customview
-                            │   ├── EmailInputView.kt
-                            │   └── PasswordInputView.kt
                             ├── model
                             │   ├── data
                             │   │   ├── local
                             │   │   │   ├── database
+                            │   │   │   │   ├── RemoteKeyDao.kt
+                            │   │   │   │   ├── RemoteKey.kt
+                            │   │   │   │   ├── StoryDao.kt
                             │   │   │   │   ├── StoryDatabase.kt
                             │   │   │   │   └── Story.kt
                             │   │   │   └── pref
                             │   │   │       ├── User.kt
                             │   │   │       └── UserPreferences.kt
                             │   │   └── remote
-                            │   │       ├── ApiService.kt
                             │   │       ├── response
                             │   │       │   ├── LoginResponse.kt
                             │   │       │   ├── NewStoryResponse.kt
@@ -28,12 +27,15 @@ MyStoryApp2
                             │   │       │   ├── StoryDetailResponse.kt
                             │   │       │   └── StoryListResponse.kt
                             │   │       └── retrofit
+                            │   │           ├── ApiConfig.kt
+                            │   │           └── ApiService.kt
                             │   ├── di
                             │   │   ├── Injection.kt
                             │   │   └── TokenHolder.kt
                             │   └── repository
                             │       ├── AppRepository.kt
-                            │       └── RequestResult.kt
+                            │       ├── RequestResult.kt
+                            │       └── StoryRemoteMediator.kt
                             ├── ui
                             │   ├── activity
                             │   │   ├── LoginActivity.kt
@@ -43,7 +45,11 @@ MyStoryApp2
                             │   │   ├── StoryAddActivity.kt
                             │   │   └── StoryDetailActivity.kt
                             │   ├── adapter
+                            │   │   ├── LoadingStateAdapter.kt
                             │   │   └── StoryListAdapter.kt
+                            │   ├── customview
+                            │   │   ├── EmailInputView.kt
+                            │   │   └── PasswordInputView.kt
                             │   └── viewmodel
                             │       ├── LoginViewModel.kt
                             │       ├── MainViewModel.kt
@@ -53,7 +59,8 @@ MyStoryApp2
                             │       ├── StoryDetailViewModel.kt
                             │       └── ViewModelFactory.kt
                             └── util
+                                ├── EspressoIdlingResource.kt
                                 └── ImageFileHelper.kt
 
-24 directories, 31 files
+24 directories, 38 files
 ```
