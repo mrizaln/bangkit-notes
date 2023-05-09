@@ -1,6 +1,6 @@
 package com.example.mynavdrawer
 
-import android.widget.Toast
+import android.content.Context
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.compose.foundation.background
@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Divider
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -29,10 +30,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
@@ -53,7 +52,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.mynavdrawer.ui.theme.MyNavDrawerTheme
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.CoroutineScope
 
 data class MenuItem(
     val title: String,
@@ -62,51 +61,35 @@ data class MenuItem(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+fun rememberMyNavDrawerState(
+    drawerState: DrawerState = rememberDrawerState(DrawerValue.Closed),
+    snackbarHostState: SnackbarHostState = remember { SnackbarHostState() },
+    coroutineScope: CoroutineScope = rememberCoroutineScope(),
+    context: Context = LocalContext.current,
+): MyNavDrawerState = remember(drawerState, snackbarHostState, coroutineScope, context) {
+    MyNavDrawerState(drawerState, snackbarHostState, coroutineScope, context)
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
 fun MyNavDrawerApp() {
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
-    val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
-    val context = LocalContext.current
+    val appState = rememberMyNavDrawerState()
 
     ModalNavigationDrawer(
-        drawerState = drawerState,
+        drawerState = appState.drawerState,
         drawerContent = {
             MyDrawerContent(
-                onItemSelected = { title ->
-                    scope.launch {
-                        drawerState.close()
-                        val snackbarResult = snackbarHostState.showSnackbar(
-                            message = context.resources.getString(R.string.coming_soon, title),
-                            actionLabel = context.resources.getString(R.string.subscribe_question),
-                            true,
-                            SnackbarDuration.Short
-                        )
-                        if (snackbarResult == SnackbarResult.ActionPerformed) {
-                            Toast.makeText(
-                                context,
-                                context.resources.getString(R.string.subscribed_info),
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
-                },
-                onBackPress = {
-                    if (drawerState.isOpen)
-                        scope.launch { drawerState.close() }
-                }
+                onItemSelected = appState::onItemSelected,
+                onBackPress = appState::onBackPress
             )
         },
-        gesturesEnabled = drawerState.isOpen,
+        gesturesEnabled = appState.drawerState.isOpen,
         modifier = Modifier.fillMaxHeight()
     ) {
         Scaffold(
-            snackbarHost = { SnackbarHost(snackbarHostState) },
+            snackbarHost = { SnackbarHost(appState.snackbarHostState) },
             topBar = {
-                MyTopBar {
-                    scope.launch {
-                        drawerState.open()
-                    }
-                }
+                MyTopBar(onMenuClick = appState::onMenuClick)
             }
         ) { paddingValues ->
             Box(
