@@ -4,3 +4,6 @@
 [submodule "M.4. Belajar Fundamental Aplikasi Android/5_submission_1/MyGithubApp"]
 	path = M.4. Belajar Fundamental Aplikasi Android/5_submission_1/MyGithubApp
 	url = git@github.com:mrizaln/MyGithubApp.git
+[submodule "M.4. Belajar Fundamental Aplikasi Android/9_submission_2/MyGithubApp2"]
+	path = M.4. Belajar Fundamental Aplikasi Android/9_submission_2/MyGithubApp2
+	url = git@github.com:mrizaln/MyGithubApp2.git
