@@ -7,3 +7,6 @@
 [submodule "M.4. Belajar Fundamental Aplikasi Android/9_submission_2/MyGithubApp2"]
 	path = M.4. Belajar Fundamental Aplikasi Android/9_submission_2/MyGithubApp2
 	url = git@github.com:mrizaln/MyGithubApp2.git
+[submodule "M.5. Belajar Pengembangan Aplikasi Android Intermediate/06_submission_1/MyStoryApp"]
+	path = M.5. Belajar Pengembangan Aplikasi Android Intermediate/06_submission_1/MyStoryApp
+	url = git@github.com:mrizaln/MyStoryApp.git
