@@ -13,3 +13,6 @@
 [submodule "M.5. Belajar Pengembangan Aplikasi Android Intermediate/11_submission_2/MyStoryApp2"]
 	path = M.5. Belajar Pengembangan Aplikasi Android Intermediate/11_submission_2/MyStoryApp2
 	url = git@github.com:mrizaln/MyStoryApp2.git
+[submodule "M.7. Belajar Membuat Aplikasi Android dengan Jetpack Compose/9_submission/MyGithubApp3"]
+	path = M.7. Belajar Membuat Aplikasi Android dengan Jetpack Compose/9_submission/MyGithubApp3
+	url = git@github.com:mrizaln/MyGithubApp3.git
